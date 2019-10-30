@@ -1,0 +1,9 @@
+Program HelloThere
+begin
+    int a = 5
+    int c = 7
+    double b = 6.5
+    if(a >= c)
+        b = 3
+    endif
+endbegin
