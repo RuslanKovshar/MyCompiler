@@ -18,6 +18,7 @@ class TokenHolder {
         tableOfLanguageTokens.put("while","keyword");
         tableOfLanguageTokens.put("end","keyword");
         tableOfLanguageTokens.put("int","keyword");
+        tableOfLanguageTokens.put("double","keyword");
         tableOfLanguageTokens.put("=","assign_op");
         tableOfLanguageTokens.put(".","dot");
         tableOfLanguageTokens.put(" ","ws");
@@ -29,6 +30,8 @@ class TokenHolder {
         tableOfLanguageTokens.put("/","mult_op");
         tableOfLanguageTokens.put("(","par_op");
         tableOfLanguageTokens.put(")","par_op");
+
+        tableOfLanguageTokens.put("**","pow_op");
 
         tableOfLanguageTokens.put("==","rel_op");
         tableOfLanguageTokens.put("!=","rel_op");

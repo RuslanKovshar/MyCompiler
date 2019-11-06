@@ -2,23 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef2b7183-0ac1-4016-b177-741b97a0069a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ruslan/State.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ruslan/StateHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ruslan/Token.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ruslan/TokenHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/myProgram.thend" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/LexicalAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/LexicalAnalyzer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/SymbolsContainer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/SymbolsToCheck.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/Tokens.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/StateHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/StateHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/TokenHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/TokenHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/myProgram.thend" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/myProgram.thend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/myProgram.thend" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/myProgram.thend" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ruslan/LexicalAnalyzer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/LexicalAnalyzer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/SymbolsContainer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/SymbolsToCheck.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/Tokens.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/State.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/State.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/StateHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/StateHolder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/Token.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/TokenHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/TokenHolder.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,6 +62,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -110,7 +107,17 @@
       <option name="presentableId" value="Default" />
       <updated>1572346120185</updated>
       <workItem from="1572346124492" duration="17347000" />
-      <workItem from="1572440801470" duration="9562000" />
+      <workItem from="1572440801470" duration="9687000" />
+      <workItem from="1572456980373" duration="248000" />
+      <workItem from="1572525255240" duration="926000" />
+      <workItem from="1572527651779" duration="18000" />
+      <workItem from="1572697550232" duration="126000" />
+      <workItem from="1572698466722" duration="17000" />
+      <workItem from="1572698509334" duration="523000" />
+      <workItem from="1572878331303" duration="38000" />
+      <workItem from="1573029824285" duration="387000" />
+      <workItem from="1573048122373" duration="11182000" />
+      <workItem from="1573071893426" duration="2565000" />
     </task>
     <servers />
   </component>

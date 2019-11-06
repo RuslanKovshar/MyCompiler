@@ -3,10 +3,7 @@ package ruslan;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 class LexicalAnalyzer {
 
@@ -14,9 +11,9 @@ class LexicalAnalyzer {
     private int state = INITIAL_STATE;
     private int lineNumber = 1;
     private String program;
-    private List<Integer> finalStates = new ArrayList<>(Arrays.asList(2, 6, 9, 12, 13, 14, 15, 101, 102, 55));
-    private List<Integer> states = new ArrayList<>(Arrays.asList(2, 6, 9));
-    private List<Integer> errorStates = new ArrayList<>(Arrays.asList(101, 102));
+    private List<Integer> finalStates = new ArrayList<>(Arrays.asList(2, 6, 9, 12, 13, 14, 15, 101, 102, 55, 103, 90, 83, 56, 45));
+    private List<Integer> mainStates = new ArrayList<>(Arrays.asList(2, 6, 9)); //states for int double ind
+    private List<Integer> errorStates = new ArrayList<>(Arrays.asList(/*101,*/ 102, 103));
     private String lexeme = "";
     private int index = -1;
 
@@ -27,20 +24,22 @@ class LexicalAnalyzer {
     void analyze() {
         readProgram();
         char ch;
-
         while (index < program.length() - 1) {
             index++;
             ch = program.charAt(index);
+
             String classOfCh = classOfChar(ch);
-            if (classOfCh == null) continue;
-            state = nextState(state, classOfCh);
-            if (isFinalState(state)) {
-                processing(ch);
-                if (errorStates.contains(state)) break;
-            } else if (state == 0) {
-                lexeme = "";
+            if (classOfCh == null) {
+                System.err.println("Error in line: " + lineNumber + " unexpected symbol: " + ch);
             } else {
-                lexeme += ch;
+                state = nextState(state, classOfCh);
+                if (isFinalState(state)) {
+                    processing(ch);
+                } else if (state == 0) {
+                    lexeme = "";
+                } else {
+                    lexeme += ch;
+                }
             }
         }
         printTable(tokens);
@@ -61,11 +60,11 @@ class LexicalAnalyzer {
         }
     }
 
-    private int getIndex(){
+    private int getIndex() {
         if (state == 2) {
             return checkToken(variables);
         }
-        if (state == 6 || state == 9){
+        if (state == 6 || state == 9) {
             return checkToken(constants);
         }
         return -1;
@@ -74,10 +73,10 @@ class LexicalAnalyzer {
     private int checkToken(List<Token> tokens) {
         int tokenIndex;
         Optional<Token> any = tokens.stream().filter(token -> token.getLexeme().equals(lexeme)).findAny();
-        if (any.isPresent()){
+        if (any.isPresent()) {
             tokenIndex = any.get().getIndex();
         } else {
-            tokens.add(new Token(lineNumber,lexeme,tokens.size() + 1));
+            tokens.add(new Token(lineNumber, lexeme, tokens.size() + 1));
             tokenIndex = tokens.size();
         }
         return tokenIndex;
@@ -89,37 +88,43 @@ class LexicalAnalyzer {
             state = 0;
         }
         String token;
-        if (states.contains(state)) {
+        if (mainStates.contains(state)) {
             token = getToken(state, lexeme);
             if (!token.equals("keyword")) {
                 int tokenIndex = getIndex();
-                tokens.add(new Token(lineNumber,lexeme,token,tokenIndex));
-                //System.out.printf("%10s %10s\n", lexeme, token);
+                tokens.add(new Token(lineNumber, lexeme, token, tokenIndex));
             } else {
-                tokens.add(new Token(lineNumber,lexeme,token));
-                //System.out.printf("%10s %10s\n", lexeme, token);
+                tokens.add(new Token(lineNumber, lexeme, token));
             }
             lexeme = "";
             index--;
             state = 0;
         }
-        if (state == 12 || state == 14 || state == 15) {
+        if (state == 12 || state == 14 || state == 15 || state == 45 || state == 83) {
             lexeme += ch;
             token = getToken(state, lexeme);
-            tokens.add(new Token(lineNumber,lexeme,token));
-           // System.out.printf("%10s %10s\n", lexeme, token);
+            tokens.add(new Token(lineNumber, lexeme, token));
             lexeme = "";
             state = 0;
         }
-        if (state == 55) {// single rel_op < > =
+        if (state == 55 || state == 56) {// single rel_op < > =
             token = getToken(state, lexeme);
-            tokens.add(new Token(lineNumber,lexeme,token));
-           // System.out.printf("%10s %10s\n", lexeme, token);
+            tokens.add(new Token(lineNumber, lexeme, token));
             lexeme = "";
             state = 0;
+            index--;
         }
         if (errorStates.contains(state)) {
-            System.out.println("Оишбка");
+            System.err.println("Error in line: " + lineNumber + " unexpected symbol: " + lexeme);
+            state = 0;
+            lexeme = "";
+            index--;
+        }
+        if (state == 101) {
+            lexeme += ch;
+            System.out.println("Error in line: " + lineNumber + " unexpected symbol: " + lexeme);
+            state = 0;
+            lexeme = "";
         }
     }
 
@@ -143,9 +148,10 @@ class LexicalAnalyzer {
         if ("abcdefghijklmnopqrstuvwxyz".indexOf(ch) > -1 || "abcdefghijklmnopqrstuvwxyz".toUpperCase().indexOf(ch) > -1)
             res = "Letter";
         if ("0123456789".indexOf(ch) > -1) res = "Digit";
-        if (" \t".indexOf(ch) > -1) res = "ws";
+        if ("\t".indexOf(ch) > -1) res = "ws";
+        if ((int)ch == 32 || (int)ch == 13) res = "ws";
         if (ch == '\n') res = "nl";
-        if ("!+-=()<>".indexOf(ch) > -1) res = "" + ch;
+        if ("!+-=()<>*/".indexOf(ch) > -1) res = "" + ch;
         return res;
     }
 

@@ -24,4 +24,12 @@ public class State {
     public int hashCode() {
         return Objects.hash(number, type);
     }
+
+    @Override
+    public String toString() {
+        return "State{" +
+                "number=" + number +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }

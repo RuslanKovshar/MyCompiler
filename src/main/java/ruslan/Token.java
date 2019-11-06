@@ -19,11 +19,6 @@ public class Token {
         this.token = token;
     }
 
-    public Token(String lexeme, Integer index) {
-        this.lexeme = lexeme;
-        this.index = index;
-    }
-
     Token(int lineNumber, String lexeme, Integer index) {
         this.lineNumber = lineNumber;
         this.lexeme = lexeme;

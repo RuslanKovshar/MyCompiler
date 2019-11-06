@@ -1,9 +1,10 @@
+а б %
 Program HelloThere
 begin
-    int a = 5
-    int c = 7
-    double b = 6.5
-    if(a >= c)
+    int a = .111
+    double b = 6.8.70980989.
+    double k = 1.4E-10
+    if(a >=c)
         b = 3
     endif
 endbegin
