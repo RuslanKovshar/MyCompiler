@@ -1,5 +1,6 @@
 Program HelloThere
 begin
+var
     int a = .111
     5 ** 5
     double k = 1.4E-10

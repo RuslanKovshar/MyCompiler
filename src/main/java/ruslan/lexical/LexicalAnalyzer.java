@@ -1,8 +1,9 @@
 package ruslan.lexical;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import ruslan.token.Token;
+import ruslan.token.TokenHolder;
+import ruslan.token.TokenTypes;
+
 import java.util.*;
 
 public class LexicalAnalyzer {
@@ -21,8 +22,11 @@ public class LexicalAnalyzer {
     private List<Token> constants = new ArrayList<>();
     private List<Token> variables = new ArrayList<>();
 
-    public void analyze() {
-        readProgram();
+    public LexicalAnalyzer(String program) {
+        this.program = program;
+    }
+
+    public List<Token> analyze() {
         char ch;
         while (index < program.length() - 1) {
             index++;
@@ -45,14 +49,15 @@ public class LexicalAnalyzer {
         printTable(tokens);
         printTable(variables);
         printTable(constants);
+        return tokens;
     }
 
     private void printTable(List<Token> tokens) {
         tokens.forEach(System.out::println);
-        System.out.println("\n");
+        System.out.println();
     }
 
-    private String getToken(int state, String lexeme) {
+    private TokenTypes getToken(int state, String lexeme) {
         if (TokenHolder.tableOfLanguageTokens.containsKey(lexeme)) {
             return TokenHolder.tableOfLanguageTokens.get(lexeme);
         } else {
@@ -87,14 +92,14 @@ public class LexicalAnalyzer {
             lineNumber++;
             state = 0;
         }
-        String token;
+        TokenTypes type;
         if (mainStates.contains(state)) {
-            token = getToken(state, lexeme);
-            if (!token.equals("keyword")) {
+            type = getToken(state, lexeme);
+            if (type != TokenTypes.KEYWORD) {
                 int tokenIndex = getIndex();
-                tokens.add(new Token(lineNumber, lexeme, token, tokenIndex));
+                tokens.add(new Token(lineNumber, lexeme, type, tokenIndex));
             } else {
-                tokens.add(new Token(lineNumber, lexeme, token));
+                tokens.add(new Token(lineNumber, lexeme, type));
             }
             lexeme = "";
             index--;
@@ -102,14 +107,14 @@ public class LexicalAnalyzer {
         }
         if (state == 12 || state == 14 || state == 15 || state == 45 || state == 83) {
             lexeme += ch;
-            token = getToken(state, lexeme);
-            tokens.add(new Token(lineNumber, lexeme, token));
+            type = getToken(state, lexeme);
+            tokens.add(new Token(lineNumber, lexeme, type));
             lexeme = "";
             state = 0;
         }
         if (state == 55 || state == 56) {// single rel_op < > =
-            token = getToken(state, lexeme);
-            tokens.add(new Token(lineNumber, lexeme, token));
+            type = getToken(state, lexeme);
+            tokens.add(new Token(lineNumber, lexeme, type));
             lexeme = "";
             state = 0;
             index--;
@@ -154,15 +159,4 @@ public class LexicalAnalyzer {
         if ("!+-=()<>*/".indexOf(ch) > -1) res = "" + ch;
         return res;
     }
-
-    private void readProgram() {
-        try {
-            byte[] bytes = Files.readAllBytes(Paths.get("src/main/resources/myProgram.thend"));
-            program = new String(bytes);
-            program += "\n";
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

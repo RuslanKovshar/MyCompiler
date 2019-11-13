@@ -1,28 +1,28 @@
-package ruslan.lexical;
+package ruslan.token;
 
 public class Token {
     private int lineNumber;
     private String lexeme;
-    private String token;
+    private TokenTypes type;
     private Integer index;
 
-    public Token(int lineNumber, String lexeme, String token, Integer index) {
+    public Token(int lineNumber, String lexeme, TokenTypes type, Integer index) {
         this.lineNumber = lineNumber;
         this.lexeme = lexeme;
-        this.token = token;
+        this.type = type;
         this.index = index;
     }
 
-    public Token(int lineNumber, String lexeme, String token) {
-        this.lineNumber = lineNumber;
-        this.lexeme = lexeme;
-        this.token = token;
-    }
-
-    Token(int lineNumber, String lexeme, Integer index) {
+    public Token(int lineNumber, String lexeme, Integer index) {
         this.lineNumber = lineNumber;
         this.lexeme = lexeme;
         this.index = index;
+    }
+
+    public Token(int lineNumber, String lexeme, TokenTypes type) {
+        this.lineNumber = lineNumber;
+        this.lexeme = lexeme;
+        this.type = type;
     }
 
     public int getLineNumber() {
@@ -41,6 +41,14 @@ public class Token {
         this.lexeme = lexeme;
     }
 
+    public TokenTypes getType() {
+        return type;
+    }
+
+    public void setType(TokenTypes type) {
+        this.type = type;
+    }
+
     public Integer getIndex() {
         return index;
     }
@@ -51,12 +59,9 @@ public class Token {
 
     @Override
     public String toString() {
-        /*return "Token{" +
-                "lineNumber=" + lineNumber +
-                ", lexeme='" + lexeme + '\'' +
-                ", token='" + token + '\'' +
-                ", index=" + index +
-                "}";*/
-        return String.format("%3d %14s %14s %3s", lineNumber, lexeme, token == null ? "" : token, index == null ? "" : index.toString());
+        return String.format("|%3d | %14s | %24s | %3s |", lineNumber,
+                lexeme,
+                type == null ? "" : type.name(),
+                index == null ? "" : index.toString());
     }
 }

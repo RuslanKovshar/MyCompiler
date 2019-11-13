@@ -1,0 +1,17 @@
+package ruslan.token;
+
+public enum TokenTypes {
+    KEYWORD,
+    ASSIGN_OPERATION,
+    DOT,
+    SPACE,
+    NEW_LINE,
+    ADDITION_OPERATION,
+    MULTIPLICATION_OPERATION,
+    PARENTHESIS_OPERATION,
+    POW_OPERATION,
+    RELATIVE_OPERATION,
+    IDENTIFIER,
+    DOUBLE,
+    INT
+}

@@ -2,10 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef2b7183-0ac1-4016-b177-741b97a0069a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ruslan/exceptions/WrongSyntaxException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ruslan/syntactical/SyntacticalAnalyzer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ruslan/token/TokenTypes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ruslan/utils/ProgramReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/LexicalAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/LexicalAnalyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/lexical/LexicalAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/lexical/LexicalAnalyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/lexical/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/token/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/lexical/TokenHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/token/TokenHolder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/myProgram.thend" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/myProgram.thend" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/myProgram.thend" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/myProgram.thend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/lexical/LexicalAnalyzer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/lexical/LexicalAnalyzer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/lexical/Token.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/lexical/TokenHolder.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,13 +28,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="oldVersion" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -74,7 +86,7 @@
       <module name="LexicalAnalyzer" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ruslan.lexical.*" />
+          <option name="PATTERN" value="ruslan.token.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -84,6 +96,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
