@@ -1,11 +1,11 @@
-package ruslan;
+package ruslan.lexical;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-class LexicalAnalyzer {
+public class LexicalAnalyzer {
 
     private final int INITIAL_STATE = 0;
     private int state = INITIAL_STATE;
@@ -13,7 +13,7 @@ class LexicalAnalyzer {
     private String program;
     private List<Integer> finalStates = new ArrayList<>(Arrays.asList(2, 6, 9, 12, 13, 14, 15, 101, 102, 55, 103, 90, 83, 56, 45));
     private List<Integer> mainStates = new ArrayList<>(Arrays.asList(2, 6, 9)); //states for int double ind
-    private List<Integer> errorStates = new ArrayList<>(Arrays.asList(/*101,*/ 102, 103));
+    private List<Integer> errorStates = new ArrayList<>(Arrays.asList(102, 103));
     private String lexeme = "";
     private int index = -1;
 
@@ -21,7 +21,7 @@ class LexicalAnalyzer {
     private List<Token> constants = new ArrayList<>();
     private List<Token> variables = new ArrayList<>();
 
-    void analyze() {
+    public void analyze() {
         readProgram();
         char ch;
         while (index < program.length() - 1) {

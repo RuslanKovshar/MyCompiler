@@ -1,4 +1,4 @@
-package ruslan;
+package ruslan.lexical;
 
 public class Token {
     private int lineNumber;

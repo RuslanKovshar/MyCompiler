@@ -1,4 +1,4 @@
-package ruslan;
+package ruslan.lexical;
 
 import java.util.HashMap;
 import java.util.Map;

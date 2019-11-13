@@ -4,17 +4,8 @@
     <list default="true" id="ef2b7183-0ac1-4016-b177-741b97a0069a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/LexicalAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/LexicalAnalyzer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/State.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/StateHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/StateHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/TokenHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/TokenHolder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/myProgram.thend" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/myProgram.thend" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/myProgram.thend" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/myProgram.thend" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/LexicalAnalyzer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/LexicalAnalyzer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/State.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/State.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/StateHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/StateHolder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/Token.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/TokenHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/TokenHolder.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +41,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tut-spring-boot-oauth2-master" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -82,7 +74,7 @@
       <module name="LexicalAnalyzer" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ruslan.*" />
+          <option name="PATTERN" value="ruslan.lexical.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -117,7 +109,9 @@
       <workItem from="1572878331303" duration="38000" />
       <workItem from="1573029824285" duration="387000" />
       <workItem from="1573048122373" duration="11182000" />
-      <workItem from="1573071893426" duration="2565000" />
+      <workItem from="1573071893426" duration="2842000" />
+      <workItem from="1573129059194" duration="1027000" />
+      <workItem from="1573219369385" duration="71000" />
     </task>
     <servers />
   </component>
