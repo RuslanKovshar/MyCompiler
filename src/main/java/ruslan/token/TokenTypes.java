@@ -13,5 +13,7 @@ public enum TokenTypes {
     RELATIVE_OPERATION,
     IDENTIFIER,
     DOUBLE,
-    INT
+    INT,
+    BOOLEAN,
+    PUNCTUATION
 }

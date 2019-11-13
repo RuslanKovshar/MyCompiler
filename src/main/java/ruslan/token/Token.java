@@ -1,5 +1,7 @@
 package ruslan.token;
 
+import java.util.Objects;
+
 public class Token {
     private int lineNumber;
     private String lexeme;
@@ -63,5 +65,20 @@ public class Token {
                 lexeme,
                 type == null ? "" : type.name(),
                 index == null ? "" : index.toString());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Token token = (Token) o;
+        return  Objects.equals(lexeme, token.lexeme) &&
+                type == token.type &&
+                Objects.equals(index, token.index);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(lineNumber, lexeme, type, index);
     }
 }

@@ -69,7 +69,7 @@ public class LexicalAnalyzer {
         if (state == 2) {
             return checkToken(variables);
         }
-        if (state == 6 || state == 9) {
+        if (state == 6 || state == 9 || state == 90) {
             return checkToken(constants);
         }
         return -1;
@@ -94,6 +94,7 @@ public class LexicalAnalyzer {
         }
         TokenTypes type;
         if (mainStates.contains(state)) {
+            if (lexeme.equals("true") || lexeme.equals("false")) state = 90;
             type = getToken(state, lexeme);
             if (type != TokenTypes.KEYWORD) {
                 int tokenIndex = getIndex();
@@ -149,6 +150,7 @@ public class LexicalAnalyzer {
     private String classOfChar(char ch) {
         String res = null;
         if (ch == '.') res = "dot";
+        if (ch == ',') res = "coma";
         if (ch == '_') res = "Bottom";
         if ("abcdefghijklmnopqrstuvwxyz".indexOf(ch) > -1 || "abcdefghijklmnopqrstuvwxyz".toUpperCase().indexOf(ch) > -1)
             res = "Letter";

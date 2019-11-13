@@ -65,6 +65,8 @@ class StateHolder {
         stateTransitionFunction.put(new State(0, "("), 14);
         stateTransitionFunction.put(new State(0, ")"), 14);
 
+        stateTransitionFunction.put(new State(0, "coma"), 14);
+
         stateTransitionFunction.put(new State(0, "other"), 101);
     }
 }

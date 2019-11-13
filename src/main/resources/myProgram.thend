@@ -1,10 +1,5 @@
 Program HelloThere
+var int a,b
+    double k,m,l
+    boolean isValid,isGood
 begin
-var
-    int a = .111
-    5 ** 5
-    double k = 1.4E-10
-    if(a >=c)
-        b = 3
-    endif
-endbegin
