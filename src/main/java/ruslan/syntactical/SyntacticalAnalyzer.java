@@ -4,16 +4,17 @@ import ruslan.exceptions.WrongSyntaxException;
 import ruslan.token.Token;
 import ruslan.token.TokenTypes;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SyntacticalAnalyzer {
     private List<Token> tokens;
-    private List<Token> identifierList = new ArrayList<>();
+    private Set<Token> identifierList = new HashSet<>();//TODO: change to Set
     private int index = 0;
 
     public SyntacticalAnalyzer(List<Token> tokens) {
-        tokens.add(new Token(999, "temp", 5));
+        //tokens.add(new Token(999, "temp", 5));
         this.tokens = tokens;
     }
 
@@ -65,11 +66,7 @@ public class SyntacticalAnalyzer {
         Token token = tokens.get(index++);
         System.out.println(token);
         if (token.getType() != TokenTypes.IDENTIFIER) throw new WrongSyntaxException("Identifier expected");
-        if (identifierList.contains(token)) {
-            throw new WrongSyntaxException("Variable '" + token.getLexeme() + "' already defined in the scope");
-        } else {
-            identifierList.add(token);
-        }
+        if (!identifierList.add(token)) throw new WrongSyntaxException("Variable '" + token.getLexeme() + "' already defined in the scope");
         if (tokens.get(this.index).getType() == TokenTypes.PUNCTUATION) {
             this.index++;
             parseIdentifierList();

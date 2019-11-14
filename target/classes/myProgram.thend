@@ -1,5 +1,5 @@
-Program 
-var int a,b
+Program HelloThere
+var int a
     double k,m,l
-    boolean isValid,isGood
+    boolean isValid
 begin

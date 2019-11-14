@@ -79,6 +79,6 @@ public class Token {
 
     @Override
     public int hashCode() {
-        return Objects.hash(lineNumber, lexeme, type, index);
+        return Objects.hash(lexeme, type, index);
     }
 }

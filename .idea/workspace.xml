@@ -3,19 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ef2b7183-0ac1-4016-b177-741b97a0069a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/lexical/LexicalAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/lexical/LexicalAnalyzer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/lexical/StateHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/lexical/StateHolder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/syntactical/SyntacticalAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/syntactical/SyntacticalAnalyzer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/token/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/token/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/token/TokenHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/token/TokenHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/token/TokenTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/token/TokenTypes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/myProgram.thend" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/myProgram.thend" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/myProgram.thend" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/myProgram.thend" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/lexical/LexicalAnalyzer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/lexical/LexicalAnalyzer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/lexical/StateHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/lexical/StateHolder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ruslan/syntactical/SyntacticalAnalyzer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/syntactical/SyntacticalAnalyzer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/token/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/token/Token.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/token/TokenHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/token/TokenHolder.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -124,6 +115,8 @@
       <workItem from="1573071893426" duration="2842000" />
       <workItem from="1573129059194" duration="1027000" />
       <workItem from="1573219369385" duration="71000" />
+      <workItem from="1573727647972" duration="555000" />
+      <workItem from="1573733019361" duration="1046000" />
     </task>
     <servers />
   </component>
