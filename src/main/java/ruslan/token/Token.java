@@ -62,7 +62,7 @@ public class Token {
     @Override
     public String toString() {
         return String.format("|%3d | %14s | %24s | %3s |", lineNumber,
-                lexeme,
+                lexeme.equals("\n")? "" : lexeme,
                 type == null ? "" : type.name(),
                 index == null ? "" : index.toString());
     }

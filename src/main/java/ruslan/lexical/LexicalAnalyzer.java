@@ -88,10 +88,6 @@ public class LexicalAnalyzer {
     }
 
     private void processing(char ch) {
-        if (state == 13) {
-            lineNumber++;
-            state = 0;
-        }
         TokenTypes type;
         if (mainStates.contains(state)) {
             if (lexeme.equals("true") || lexeme.equals("false")) state = 90;
@@ -104,6 +100,13 @@ public class LexicalAnalyzer {
             }
             lexeme = "";
             index--;
+            state = 0;
+        }
+        if (state == 13) {
+            lexeme += ch;
+            type = getToken(state, lexeme);
+            tokens.add(new Token(lineNumber++, lexeme, type));
+            lexeme = "";
             state = 0;
         }
         if (state == 12 || state == 14 || state == 15 || state == 45 || state == 83) {

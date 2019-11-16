@@ -1,5 +1,9 @@
-Program HelloThere
-var int a
+program HelloThere
+var
+    int a
     double k,m,l
     boolean isValid
+endvar
+
 begin
+endbegin

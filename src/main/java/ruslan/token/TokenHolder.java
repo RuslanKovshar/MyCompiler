@@ -1,8 +1,11 @@
 package ruslan.token;
 
+import ruslan.Keywords;
+
 import java.util.HashMap;
 import java.util.Map;
 
+import static ruslan.Keywords.*;
 import static ruslan.token.TokenTypes.*;
 
 public class TokenHolder {
@@ -11,19 +14,20 @@ public class TokenHolder {
     public static Map<Integer, TokenTypes> tableIdentFloatInt = new HashMap<>();
 
     static {
-        tableOfLanguageTokens.put("Program", KEYWORD);
-        tableOfLanguageTokens.put("begin", KEYWORD);
-        tableOfLanguageTokens.put("endbegin", KEYWORD);
-        tableOfLanguageTokens.put("if", KEYWORD);
-        tableOfLanguageTokens.put("endif", KEYWORD);
-        tableOfLanguageTokens.put("var", KEYWORD);
-        tableOfLanguageTokens.put("do", KEYWORD);
-        tableOfLanguageTokens.put("enddo", KEYWORD);
-        tableOfLanguageTokens.put("while", KEYWORD);
-        tableOfLanguageTokens.put("end", KEYWORD);
-        tableOfLanguageTokens.put("int", KEYWORD);
-        tableOfLanguageTokens.put("double", KEYWORD);
-        tableOfLanguageTokens.put("boolean", KEYWORD);
+        tableOfLanguageTokens.put(PROGRAM.toString(), KEYWORD);
+        tableOfLanguageTokens.put(BEGIN.toString(), KEYWORD);
+        tableOfLanguageTokens.put(ENDBEGIN.toString(), KEYWORD);
+        tableOfLanguageTokens.put(IF.toString(), KEYWORD);
+        tableOfLanguageTokens.put(ENDIF.toString(), KEYWORD);
+        tableOfLanguageTokens.put(VAR.toString(), KEYWORD);
+        tableOfLanguageTokens.put(ENDVAR.toString(), KEYWORD);
+        tableOfLanguageTokens.put(DO.toString(), KEYWORD);
+        tableOfLanguageTokens.put(ENDDO.toString(), KEYWORD);
+        tableOfLanguageTokens.put(WHILE.toString(), KEYWORD);
+        //tableOfLanguageTokens.put("end", KEYWORD);
+        tableOfLanguageTokens.put(Keywords.INT.toString(), KEYWORD);
+        tableOfLanguageTokens.put(Keywords.DOUBLE.toString(), KEYWORD);
+        tableOfLanguageTokens.put(Keywords.BOOLEAN.toString(), KEYWORD);
         tableOfLanguageTokens.put("=", ASSIGN_OPERATION);
         tableOfLanguageTokens.put(".", DOT);
         tableOfLanguageTokens.put(" ", SPACE);
@@ -48,8 +52,8 @@ public class TokenHolder {
         tableOfLanguageTokens.put(",", PUNCTUATION);
 
         tableIdentFloatInt.put(2, IDENTIFIER);
-        tableIdentFloatInt.put(6, DOUBLE);
-        tableIdentFloatInt.put(9, INT);
-        tableIdentFloatInt.put(90, BOOLEAN);
+        tableIdentFloatInt.put(6, TokenTypes.DOUBLE);
+        tableIdentFloatInt.put(9, TokenTypes.INT);
+        tableIdentFloatInt.put(90, TokenTypes.BOOLEAN);
     }
 }
