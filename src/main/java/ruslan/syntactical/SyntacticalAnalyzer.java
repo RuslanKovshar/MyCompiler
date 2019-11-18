@@ -39,17 +39,28 @@ public class SyntacticalAnalyzer {
         if (beginToken.getType() != TokenTypes.KEYWORD && !beginToken.getLexeme().equals(BEGIN.toString())) {
             throw new WrongSyntaxException("'" + BEGIN.toString() + "' expected!", beginToken.getLineNumber());
         }
+        newLine();
         parseStatementList();
 
-       /* newLine();
+
         Token endToken = tokens.get(index);
         if (endToken.getType() != TokenTypes.KEYWORD && !endToken.getLexeme().equals(BEGIN.toString())) {
             throw new WrongSyntaxException("'" + ENDBEGIN.toString() + "' expected!", endToken.getLineNumber());
-        }*/
+        }
     }
 
     private void parseStatementList() throws WrongSyntaxException {
+        Token token = tokens.get(index++);
+        System.out.println(token);
 
+
+        switch (token.getType()) {
+            case IDENTIFIER:
+                System.out.println("sout");
+                break;
+            default: return;
+        }
+        parseStatementList();
     }
 
     private void parseStatement() throws WrongSyntaxException {

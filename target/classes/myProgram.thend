@@ -4,6 +4,6 @@ var
     double k,m,l
     boolean isValid
 endvar
-
 begin
+    a = 5
 endbegin
