@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ef2b7183-0ac1-4016-b177-741b97a0069a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/Keywords.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/Keywords.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/syntactical/SyntacticalAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/syntactical/SyntacticalAnalyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/token/TokenHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/token/TokenHolder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/myProgram.thend" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/myProgram.thend" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -118,6 +120,7 @@
       <workItem from="1573932329988" duration="485000" />
       <workItem from="1573932910502" duration="7731000" />
       <workItem from="1573941256049" duration="974000" />
+      <workItem from="1574101424139" duration="5414000" />
     </task>
     <servers />
   </component>

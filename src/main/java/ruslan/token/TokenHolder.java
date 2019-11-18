@@ -24,6 +24,8 @@ public class TokenHolder {
         tableOfLanguageTokens.put(DO.toString(), KEYWORD);
         tableOfLanguageTokens.put(ENDDO.toString(), KEYWORD);
         tableOfLanguageTokens.put(WHILE.toString(), KEYWORD);
+        tableOfLanguageTokens.put(READ.toString(), KEYWORD);
+        tableOfLanguageTokens.put(WRITE.toString(), KEYWORD);
         //tableOfLanguageTokens.put("end", KEYWORD);
         tableOfLanguageTokens.put(Keywords.INT.toString(), KEYWORD);
         tableOfLanguageTokens.put(Keywords.DOUBLE.toString(), KEYWORD);

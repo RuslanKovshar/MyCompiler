@@ -1,9 +1,13 @@
 program HelloThere
 var
     int a
-    double k,m,l
-    boolean isValid
 endvar
+
 begin
-    a = 5
-endbegin
+    read(a)
+    endbegin
+
+
+
+
+

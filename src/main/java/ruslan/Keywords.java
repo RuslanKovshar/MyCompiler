@@ -13,7 +13,9 @@ public enum Keywords {
     IF,
     ENDIF,
     PROGRAM,
-    WHILE;
+    WHILE,
+    READ,
+    WRITE;
 
     @Override
     public String toString() {
