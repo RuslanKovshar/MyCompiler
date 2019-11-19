@@ -1,13 +1,15 @@
 program HelloThere
 var
-    int a
+    int N
+    double x1,x2
+    int velichkoPidor
 endvar
-
 begin
-    read(a)
-    endbegin
-
-
-
-
-
+    read(N)
+    velichkoPidorPidor = velichkoPidor * 0
+    x1 = -1.5 * N
+    x2 = ((x1 / N) * (10 * 3 + (5 - 4)))/.7
+    x3 = x1 - x2
+    write(((x1 / N) * (10 * 3))/.7)
+    write(x1,x2,N)
+endbegin

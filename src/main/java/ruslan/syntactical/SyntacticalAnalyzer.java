@@ -6,13 +6,11 @@ import ruslan.exceptions.WrongSyntaxException;
 import ruslan.token.Token;
 import ruslan.token.TokenTypes;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static ruslan.Keywords.*;
-import static ruslan.token.TokenTypes.KEYWORD;
+import static ruslan.token.TokenTypes.*;
 
 public class SyntacticalAnalyzer {
     private static final Logger log = Logger.getLogger(SyntacticalAnalyzer.class);
@@ -27,32 +25,24 @@ public class SyntacticalAnalyzer {
 
     public void parse() {
         try {
-            checkBlocks();
+            //checkBlocks();
             parseProgramName();
             parseDeclarationBlock();
             parseMainBlock();
         } catch (WrongSyntaxException e) {
-            log.error(e.getErrorMessage());
+            e.printStackTrace();
+            //log.error(e.getErrorMessage());
         }
     }
 
-    private void checkBlocks() throws WrongSyntaxException {
+    /*private void checkBlocks() throws WrongSyntaxException {
         List<Keywords> keywords = tokens.stream()
                 .filter(token -> token.getType() == KEYWORD)
                 .map(token -> valueOf(token.getLexeme().toUpperCase()))
                 .collect(Collectors.toList());
-        checkBlockToken(keywords, VAR);
-        checkBlockToken(keywords, ENDVAR);
-        checkBlockToken(keywords, BEGIN);
-        checkBlockToken(keywords, ENDBEGIN);
-    }
-
-    private void checkBlockToken(List<Keywords> keywords, Keywords word) throws WrongSyntaxException {
-        keywords.stream()
-                .filter(keyword -> keyword == word)
-                .findAny()
-                .orElseThrow(() -> new WrongSyntaxException("Error on blocks",1));
-    }
+        boolean containsAll = keywords.containsAll(Arrays.asList(VAR, ENDVAR, BEGIN, ENDBEGIN));
+        if (!containsAll) throw new WrongSyntaxException("Error on blocks", 1);
+    }*/
 
     private void parseMainBlock() throws WrongSyntaxException {
         index++;
@@ -140,16 +130,108 @@ public class SyntacticalAnalyzer {
 
     private void parseWrite() throws WrongSyntaxException {
         System.out.println("write");
+        Token leftB = tokens.get(index++);
+        if (!leftB.getLexeme().equals("(")) {
+            throw new WrongSyntaxException("'(' Expected", leftB.getLineNumber());
+        }
+
+        Token token = tokens.get(index);
+        if (token.getType() == IDENTIFIER) {
+            int oldIndex = index;
+            try {
+                parseIdentifierList();
+            } catch (WrongSyntaxException e) {
+                index = oldIndex;
+                parseRelExpression();
+            }
+        } else {
+            parseRelExpression();
+        }
+
+        //parseIdentifierList();
+
+        Token rightB = tokens.get(index++);
+        System.out.println(rightB);
+        if (!rightB.getLexeme().equals(")")) {
+            throw new WrongSyntaxException("')' Expected", rightB.getLineNumber());
+        }
         newLine();
     }
 
     private void parseAssign() throws WrongSyntaxException {
-        System.out.println("assign");
+        Token assignToken = tokens.get(index++);
+        if (!assignToken.getLexeme().equals("=")) {
+            throw new WrongSyntaxException("'=' expected", assignToken.getLineNumber());
+        }
+        parseRelExpression();
         newLine();
     }
 
-    private void parseStatement() throws WrongSyntaxException {
+    /**
+     * rel_expression = expression, {comp, expression};
+     * expression = term, { ("+"|"-"|"or"), term, };
+     * term = factor, { ("*" | "/" | "and"), factor };
+     * factor = ("+" | "-" | "not"), (factor | constant | ("(" expression ")") | identifier);
+     */
+    private void parseRelExpression() throws WrongSyntaxException {
+        parseExpression();
+        Token token = tokens.get(index);
+        if (token.getType() == TokenTypes.RELATIVE_OPERATION) {
+            index++;
+            parseExpression();
+        }
+    }
 
+    private void parseExpression() throws WrongSyntaxException {
+        parseTerm();
+        Token token = tokens.get(index);
+        if (token.getType() == ADDITION_OPERATION) {
+            index++;
+            parseTerm();
+        }
+    }
+
+    private void parseTerm() throws WrongSyntaxException {
+        parseFactor();
+        Token token = tokens.get(index);
+        if (token.getType() == MULTIPLICATION_OPERATION) {
+            index++;
+            parseFactor();
+        }
+    }
+
+    private void parseFactor() throws WrongSyntaxException {
+
+        Token token = tokens.get(index);
+
+        System.err.println(token);
+
+        if (token.getType() == ADDITION_OPERATION){
+            index++;
+        }
+
+        Token token1 = tokens.get(index++);
+
+        if (token1.getType() == IDENTIFIER) {
+            return;
+        }
+        if (token1.getType() == TokenTypes.INT ||
+                token1.getType() == TokenTypes.DOUBLE ||
+                token1.getType() == TokenTypes.BOOLEAN) {
+            return;
+        }
+        if (token1.getLexeme().equals("(")) {
+            parseExpression();
+            Token closeBracket = tokens.get(index++);
+            if (closeBracket.getLexeme().equals(")")) {
+                return;
+            } else {
+                throw new WrongSyntaxException("')' expected", closeBracket.getLineNumber());
+            }
+        } else {
+            throw new WrongSyntaxException("Unexpected token", token.getLineNumber());
+        }
+        //parseFactor();
     }
 
     private void parseProgramName() throws WrongSyntaxException {
@@ -205,9 +287,9 @@ public class SyntacticalAnalyzer {
 
         Token typeToken = tokens.get(index++);
         if (typeToken.getType() == KEYWORD &&
-                (typeToken.getLexeme().equals(INT.toString()) ||
-                        typeToken.getLexeme().equals(DOUBLE.toString()) ||
-                        typeToken.getLexeme().equals(BOOLEAN.toString()))) {
+                (typeToken.getLexeme().equals(Keywords.INT.toString()) ||
+                        typeToken.getLexeme().equals(Keywords.DOUBLE.toString()) ||
+                        typeToken.getLexeme().equals(Keywords.BOOLEAN.toString()))) {
             parseIdentifierList();
             newLine();
         } else {
