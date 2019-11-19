@@ -25,24 +25,24 @@ public class SyntacticalAnalyzer {
 
     public void parse() {
         try {
-            //checkBlocks();
+            checkBlocks();
             parseProgramName();
             parseDeclarationBlock();
             parseMainBlock();
         } catch (WrongSyntaxException e) {
-            e.printStackTrace();
-            //log.error(e.getErrorMessage());
+            //e.printStackTrace();
+            log.error(e.getErrorMessage());
         }
     }
 
-    /*private void checkBlocks() throws WrongSyntaxException {
+    private void checkBlocks() throws WrongSyntaxException {
         List<Keywords> keywords = tokens.stream()
                 .filter(token -> token.getType() == KEYWORD)
-                .map(token -> valueOf(token.getLexeme().toUpperCase()))
+                .map(token -> Keywords.valueOf(token.getLexeme().toUpperCase()))
                 .collect(Collectors.toList());
         boolean containsAll = keywords.containsAll(Arrays.asList(VAR, ENDVAR, BEGIN, ENDBEGIN));
         if (!containsAll) throw new WrongSyntaxException("Error on blocks", 1);
-    }*/
+    }
 
     private void parseMainBlock() throws WrongSyntaxException {
         index++;
@@ -63,7 +63,6 @@ public class SyntacticalAnalyzer {
 
     private void parseStatementList() throws WrongSyntaxException {
         Token token = tokens.get(index++);
-        System.out.println(token);
 
         switch (token.getType()) {
             case IDENTIFIER:
@@ -73,6 +72,8 @@ public class SyntacticalAnalyzer {
             case KEYWORD:
                 parseStatementKeyword(token);
                 break;
+            default:
+                throw new WrongSyntaxException("Not a statement", token.getLineNumber());
         }
     }
 
@@ -129,7 +130,6 @@ public class SyntacticalAnalyzer {
     }
 
     private void parseWrite() throws WrongSyntaxException {
-        System.out.println("write");
         Token leftB = tokens.get(index++);
         if (!leftB.getLexeme().equals("(")) {
             throw new WrongSyntaxException("'(' Expected", leftB.getLineNumber());
@@ -148,10 +148,7 @@ public class SyntacticalAnalyzer {
             parseRelExpression();
         }
 
-        //parseIdentifierList();
-
         Token rightB = tokens.get(index++);
-        System.out.println(rightB);
         if (!rightB.getLexeme().equals(")")) {
             throw new WrongSyntaxException("')' Expected", rightB.getLineNumber());
         }
@@ -169,9 +166,11 @@ public class SyntacticalAnalyzer {
 
     /**
      * rel_expression = expression, {comp, expression};
+     * condFactor = ("not") {condFactor | constant | '(' ')'}
      * expression = term, { ("+"|"-"|"or"), term, };
      * term = factor, { ("*" | "/" | "and"), factor };
-     * factor = ("+" | "-" | "not"), (factor | constant | ("(" expression ")") | identifier);
+     * base = ("+" | "-" | "not"), (base | constant | ("(" expression ")") | identifier)
+     * factor = base { ("**") base};
      */
     private void parseRelExpression() throws WrongSyntaxException {
         parseExpression();
@@ -201,31 +200,23 @@ public class SyntacticalAnalyzer {
     }
 
     private void parseFactor() throws WrongSyntaxException {
-
         Token token = tokens.get(index);
-
-        System.err.println(token);
-
-        if (token.getType() == ADDITION_OPERATION){
+        if (token.getType() == ADDITION_OPERATION) {
             index++;
         }
-
-        Token token1 = tokens.get(index++);
-
-        if (token1.getType() == IDENTIFIER) {
+        Token secondToken = tokens.get(index++);
+        if (secondToken.getType() == IDENTIFIER) {
             return;
         }
-        if (token1.getType() == TokenTypes.INT ||
-                token1.getType() == TokenTypes.DOUBLE ||
-                token1.getType() == TokenTypes.BOOLEAN) {
+        if (secondToken.getType() == TokenTypes.INT ||
+                secondToken.getType() == TokenTypes.DOUBLE ||
+                secondToken.getType() == TokenTypes.BOOLEAN) {
             return;
         }
-        if (token1.getLexeme().equals("(")) {
+        if (secondToken.getLexeme().equals("(")) {
             parseExpression();
             Token closeBracket = tokens.get(index++);
-            if (closeBracket.getLexeme().equals(")")) {
-                return;
-            } else {
+            if (!closeBracket.getLexeme().equals(")")) {
                 throw new WrongSyntaxException("')' expected", closeBracket.getLineNumber());
             }
         } else {
