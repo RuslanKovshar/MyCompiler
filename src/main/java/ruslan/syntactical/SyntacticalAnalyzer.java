@@ -51,33 +51,51 @@ public class SyntacticalAnalyzer {
         if (!(beginToken.getType() == KEYWORD && beginToken.getLexeme().equals(BEGIN.toString()))) {
             throw new WrongSyntaxException("'" + BEGIN.toString() + "' expected!", beginToken.getLineNumber());
         }
-        newLine();
-        parseStatementList();
+        //newLine();
+        parseStatementList(ENDBEGIN);
 
 
-        Token endToken = tokens.get(index - 1);
-        if (endToken.getType() != KEYWORD && !endToken.getLexeme().equals(BEGIN.toString())) {
+        Token endToken = tokens.get(index);
+        System.out.println("---> " + endToken);
+        if (!endToken.getLexeme().equals(ENDBEGIN.toString())) {
             throw new WrongSyntaxException("'" + ENDBEGIN.toString() + "' expected!", endToken.getLineNumber());
         }
     }
 
-    private void parseStatementList() throws WrongSyntaxException {
-        Token token = tokens.get(index++);
-
-        switch (token.getType()) {
-            case IDENTIFIER:
-                parseAssign();
-                parseStatementList();
-                break;
-            case KEYWORD:
-                parseStatementKeyword(token);
-                break;
-            default:
-                throw new WrongSyntaxException("Not a statement", token.getLineNumber());
+    private void parseStatementList(Keywords endWord) throws WrongSyntaxException {
+        newLine();
+        Token token = tokens.get(index);
+        System.out.println(token);
+        if (!token.getLexeme().equals(endWord.toString())) {
+            parseStatement(endWord);
         }
     }
 
-    private void parseStatementKeyword(Token token) throws WrongSyntaxException {
+    private void parseStatement(Keywords keywords) throws WrongSyntaxException {
+        Token token = tokens.get(index);
+        if (token.getType() == IDENTIFIER) {
+            index++;
+            parseAssign();
+            parseStatementList(keywords);
+            return;
+        }
+        if (token.getLexeme().equals(READ.toString())) {
+            index++;
+            parseRead();
+            parseStatementList(keywords);
+            return;
+        }
+        if (token.getLexeme().equals(WRITE.toString())) {
+            index++;
+            parseWrite();
+            parseStatementList(keywords);
+            return;
+        }
+        //newLine();
+        //parseStatementList(keywords);
+    }
+
+/*    private void parseStatementKeyword(Token token) throws WrongSyntaxException {
         if (!isEndToken(token)) {
             switch (Keywords.valueOf(token.getLexeme().toUpperCase())) {
                 case READ:
@@ -97,7 +115,7 @@ public class SyntacticalAnalyzer {
             }
             parseStatementList();
         }
-    }
+    }*/
 
     private void parseIf() throws WrongSyntaxException {
         System.out.println("If");
@@ -126,11 +144,11 @@ public class SyntacticalAnalyzer {
         if (!rightB.getLexeme().equals(")")) {
             throw new WrongSyntaxException("')' Expected", rightB.getLineNumber());
         }
-        newLine();
     }
 
     private void parseWrite() throws WrongSyntaxException {
         Token leftB = tokens.get(index++);
+        System.err.println(leftB);
         if (!leftB.getLexeme().equals("(")) {
             throw new WrongSyntaxException("'(' Expected", leftB.getLineNumber());
         }
@@ -149,10 +167,10 @@ public class SyntacticalAnalyzer {
         }
 
         Token rightB = tokens.get(index++);
+        System.err.println(rightB);
         if (!rightB.getLexeme().equals(")")) {
             throw new WrongSyntaxException("')' Expected", rightB.getLineNumber());
         }
-        newLine();
     }
 
     private void parseAssign() throws WrongSyntaxException {
@@ -161,7 +179,6 @@ public class SyntacticalAnalyzer {
             throw new WrongSyntaxException("'=' expected", assignToken.getLineNumber());
         }
         parseRelExpression();
-        newLine();
     }
 
     private void parseCondition() throws WrongSyntaxException {
