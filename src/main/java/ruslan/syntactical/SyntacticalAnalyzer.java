@@ -164,6 +164,15 @@ public class SyntacticalAnalyzer {
         newLine();
     }
 
+    private void parseCondition() throws WrongSyntaxException {
+        parseExpression();
+        Token token = tokens.get(index);
+        if (token.getType() != TokenTypes.RELATIVE_OPERATION) {
+            throw new WrongSyntaxException("Relative operation expected", token.getLineNumber());
+        }
+        parseExpression();
+    }
+
     /**
      * rel_expression = expression, {comp, expression};
      * condFactor = ("not") {condFactor | constant | '(' ')'}
