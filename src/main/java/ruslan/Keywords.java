@@ -11,6 +11,7 @@ public enum Keywords {
     BEGIN,
     ENDBEGIN,
     IF,
+    ELSE,
     ENDIF,
     PROGRAM,
     WHILE,

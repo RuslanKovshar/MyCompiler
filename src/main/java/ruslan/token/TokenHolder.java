@@ -18,6 +18,7 @@ public class TokenHolder {
         tableOfLanguageTokens.put(BEGIN.toString(), KEYWORD);
         tableOfLanguageTokens.put(ENDBEGIN.toString(), KEYWORD);
         tableOfLanguageTokens.put(IF.toString(), KEYWORD);
+        tableOfLanguageTokens.put(ELSE.toString(), KEYWORD);
         tableOfLanguageTokens.put(ENDIF.toString(), KEYWORD);
         tableOfLanguageTokens.put(VAR.toString(), KEYWORD);
         tableOfLanguageTokens.put(ENDVAR.toString(), KEYWORD);

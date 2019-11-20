@@ -1,17 +1,46 @@
 program HelloThere
 var
     int N
-
 endvar
 begin
-
     read(N,a,b)
-
-
     a = (a + b)/10 + (-9 * 3)
     b = a + b/9
 
     write((a + b)/10 + (-9 * 3))
-    
 
+    do while( (a + b)/10 + (-9 * 3) < 0 )
+        read(N)
+        do while (a < b)
+            write(N)
+            do while ( a < (m * m) / 2  )
+                a = b
+            enddo
+            a = b
+            b = a == b
+        enddo
+    enddo
+
+    if a < b
+        a = m
+        do while (a < b)
+            write(N)
+            do while ( a < m )
+                a = b
+            enddo
+            a = b
+            b = a == b
+        enddo
+    else
+        a = b
+        a = (b / 2) * 90
+        do while ( a < m )
+            a = b
+            if m == m
+                l = l
+            else
+                l = l - 1
+            endif
+        enddo
+    endif
 endbegin

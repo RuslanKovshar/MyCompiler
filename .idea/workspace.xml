@@ -3,11 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ef2b7183-0ac1-4016-b177-741b97a0069a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/Keywords.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/Keywords.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/syntactical/SyntacticalAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/syntactical/SyntacticalAnalyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ruslan/token/TokenHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ruslan/token/TokenHolder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/myProgram.thend" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/myProgram.thend" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/myProgram.thend" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/myProgram.thend" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/syntactical/SyntacticalAnalyzer$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/Keywords.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/Keywords.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ruslan/syntactical/SyntacticalAnalyzer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/syntactical/SyntacticalAnalyzer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ruslan/token/TokenHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ruslan/token/TokenHolder.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
