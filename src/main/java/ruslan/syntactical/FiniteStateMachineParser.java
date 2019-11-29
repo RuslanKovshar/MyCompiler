@@ -54,7 +54,7 @@ public class FiniteStateMachineParser implements Parser {
         try {
             nextState = SyntacticalStateHolder.getStates().get(tokenState);
         } catch (Exception e) {
-            nextState = SyntacticalStateHolder.getStates().get(new State(state, "other"));
+            nextState = SyntacticalStateHolder.getStates().get(new State(state, TokenTypes.OTHER.toString()));
         }
         return nextState;
     }
