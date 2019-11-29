@@ -40,8 +40,8 @@ public class TokenHolder {
         tableOfLanguageTokens.put("+", ADDITION_OPERATION);
         tableOfLanguageTokens.put("*", MULTIPLICATION_OPERATION);
         tableOfLanguageTokens.put("/", MULTIPLICATION_OPERATION);
-        tableOfLanguageTokens.put("(", PARENTHESIS_OPERATION);
-        tableOfLanguageTokens.put(")", PARENTHESIS_OPERATION);
+        tableOfLanguageTokens.put("(", L_PARENTHESIS_OPERATION);
+        tableOfLanguageTokens.put(")", R_PARENTHESIS_OPERATION);
 
         tableOfLanguageTokens.put("**", POW_OPERATION);
 

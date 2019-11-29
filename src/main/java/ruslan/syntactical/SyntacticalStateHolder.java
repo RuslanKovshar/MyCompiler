@@ -55,5 +55,22 @@ class SyntacticalStateHolder {
         states.put(new State(10, TokenTypes.NEW_LINE.toString()), 11);
         states.put(new State(11, TokenTypes.NEW_LINE.toString()), 11);
         states.put(new State(10, TokenTypes.OTHER.toString()), 505);
+
+        /*main block*/
+        states.put(new State(11, Keywords.BEGIN.toString()), 12);
+        states.put(new State(12, TokenTypes.NEW_LINE.toString()), 13);
+        states.put(new State(13, TokenTypes.NEW_LINE.toString()), 13);
+
+        /*read(<identifier list>)*/
+        states.put(new State(13, Keywords.READ.toString()), 14);
+        states.put(new State(14, TokenTypes.L_PARENTHESIS_OPERATION.toString()), 15);
+        states.put(new State(14, TokenTypes.OTHER.toString()), 107);
+        states.put(new State(15, TokenTypes.IDENTIFIER.toString()), 16);
+        states.put(new State(15, TokenTypes.OTHER.toString()), 105);
+        states.put(new State(16, TokenTypes.PUNCTUATION.toString()), 15);
+        states.put(new State(16, TokenTypes.R_PARENTHESIS_OPERATION.toString()), 17);
+        states.put(new State(16, TokenTypes.OTHER.toString()), 108);
+        states.put(new State(17, TokenTypes.NEW_LINE.toString()), 18);
+        states.put(new State(18, TokenTypes.NEW_LINE.toString()), 18);
     }
 }
