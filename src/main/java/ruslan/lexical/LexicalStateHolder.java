@@ -3,7 +3,7 @@ package ruslan.lexical;
 import java.util.HashMap;
 import java.util.Map;
 
-class StateHolder {
+class LexicalStateHolder {
     static Map<State, Integer> stateTransitionFunction = new HashMap<>();
 
     static {

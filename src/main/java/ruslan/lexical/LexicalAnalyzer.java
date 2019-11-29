@@ -143,10 +143,10 @@ public class LexicalAnalyzer {
 
     private int nextState(int stateNumber, String classOfCh) {
         State state = new State(stateNumber, classOfCh);
-        if (StateHolder.stateTransitionFunction.containsKey(state)) {
-            return StateHolder.stateTransitionFunction.get(state);
+        if (LexicalStateHolder.stateTransitionFunction.containsKey(state)) {
+            return LexicalStateHolder.stateTransitionFunction.get(state);
         } else {
-            return StateHolder.stateTransitionFunction.get(new State(stateNumber, "other"));
+            return LexicalStateHolder.stateTransitionFunction.get(new State(stateNumber, "other"));
         }
     }
 

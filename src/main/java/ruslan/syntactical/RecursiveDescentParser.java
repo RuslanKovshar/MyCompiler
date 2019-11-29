@@ -12,17 +12,18 @@ import java.util.stream.Collectors;
 import static ruslan.Keywords.*;
 import static ruslan.token.TokenTypes.*;
 
-public class SyntacticalAnalyzer {
-    private static final Logger log = Logger.getLogger(SyntacticalAnalyzer.class);
+public class RecursiveDescentParser implements Parser {
+    private static final Logger log = Logger.getLogger(RecursiveDescentParser.class);
     private List<Token> tokens;
     private Set<Token> identifierList = new HashSet<>();
     private int index = 0;
 
-    public SyntacticalAnalyzer(List<Token> tokens) {
+    public RecursiveDescentParser(List<Token> tokens) {
         //tokens.add(new Token(0, "", 1));
         this.tokens = tokens;
     }
 
+    @Override
     public void parse() {
         try {
             checkBlocks();

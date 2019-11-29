@@ -1,7 +1,8 @@
 package ruslan;
 
 import ruslan.lexical.LexicalAnalyzer;
-import ruslan.syntactical.SyntacticalAnalyzer;
+import ruslan.syntactical.FiniteStateMachineParser;
+import ruslan.syntactical.Parser;
 import ruslan.token.Token;
 import ruslan.utils.ProgramReader;
 
@@ -14,7 +15,7 @@ public class Main {
         final String program = ProgramReader.readProgram(PATH);
         LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(program);
         List<Token> tokens = lexicalAnalyzer.analyze();
-        SyntacticalAnalyzer syntacticalAnalyzer = new SyntacticalAnalyzer(tokens);
-        syntacticalAnalyzer.parse();
+        Parser parser = new FiniteStateMachineParser(tokens);
+        parser.parse();
     }
 }
