@@ -25,7 +25,7 @@ class ErrorHolder {
         errors.put(104, "Declaration must start with type of variable");
         errors.put(105, "Identifier expected");
         errors.put(106, "Declaration or '" + ENDVAR.toString() + "' keyword");
-        errors.put(107, "'" + TokenTypes.L_PARENTHESIS_OPERATION + "' expected");
-        errors.put(108, "'" + TokenTypes.R_PARENTHESIS_OPERATION + "' expected");
+        errors.put(107, "'(' expected");
+        errors.put(108, "')' expected");
     }
 }
