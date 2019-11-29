@@ -24,7 +24,9 @@ public class FiniteStateMachineParser implements Parser {
         for (Token token : tokens) {
             state = getNextState(state, token);
             if (finalStates.contains(state)) {
-                throw new WrongSyntaxException(ErrorHolder.getErrors().get(state), token.getLineNumber());
+                if (errorStates.contains(state)) {
+                    throw new WrongSyntaxException(ErrorHolder.getErrors().get(state), token.getLineNumber());
+                }
             }
         }
     }
@@ -45,6 +47,7 @@ public class FiniteStateMachineParser implements Parser {
         } else {
             type = token.getType().toString();
         }
+
         State tokenState = new State(state, type);
         System.out.println(tokenState);
         int nextState;

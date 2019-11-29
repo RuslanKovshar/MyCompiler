@@ -1,6 +1,10 @@
 program HelloThere
 var
-    int N
+    int N,m
+    double k,l
+    boolean m
+    int k,l
+    double A
 endvar
 begin
     read(N,a,b)
