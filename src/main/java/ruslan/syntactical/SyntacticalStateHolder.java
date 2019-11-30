@@ -70,7 +70,31 @@ class SyntacticalStateHolder {
         states.put(new State(16, TokenTypes.PUNCTUATION.toString()), 15);
         states.put(new State(16, TokenTypes.R_PARENTHESIS_OPERATION.toString()), 17);
         states.put(new State(16, TokenTypes.OTHER.toString()), 108);
-        states.put(new State(17, TokenTypes.NEW_LINE.toString()), 18);
-        states.put(new State(18, TokenTypes.NEW_LINE.toString()), 18);
+        states.put(new State(17, TokenTypes.NEW_LINE.toString()), 13);
+        states.put(new State(13, TokenTypes.NEW_LINE.toString()), 13);
+
+        /*assign*/
+        states.put(new State(13, TokenTypes.IDENTIFIER.toString()), 20);
+        states.put(new State(20, TokenTypes.ASSIGN_OPERATION.toString()), 21);
+        states.put(new State(20, TokenTypes.OTHER.toString()), 109);
+        states.put(new State(21, TokenTypes.OTHER.toString()), 111);
+
+        /*statement*/
+        states.put(new State(21, TokenTypes.ADDITION_OPERATION.toString()), 22);
+        states.put(new State(22, TokenTypes.INT.toString()), 23);
+        states.put(new State(22, TokenTypes.DOUBLE.toString()), 23);
+        states.put(new State(22, TokenTypes.IDENTIFIER.toString()), 23);
+        states.put(new State(22, TokenTypes.OTHER.toString()), 110);
+        states.put(new State(21, TokenTypes.INT.toString()), 23);
+        states.put(new State(21, TokenTypes.DOUBLE.toString()), 23);
+        states.put(new State(21, TokenTypes.BOOLEAN.toString()), 23);
+        states.put(new State(21, TokenTypes.IDENTIFIER.toString()), 23);
+        states.put(new State(21, TokenTypes.L_PARENTHESIS_OPERATION.toString()), 21);
+
+        states.put(new State(70, TokenTypes.R_PARENTHESIS_OPERATION.toString()), 23);
+        states.put(new State(70, TokenTypes.OTHER.toString()), 108);
+
+        states.put(new State(23, TokenTypes.NEW_LINE.toString()), 13);
+        states.put(new State(13, TokenTypes.NEW_LINE.toString()), 13);
     }
 }

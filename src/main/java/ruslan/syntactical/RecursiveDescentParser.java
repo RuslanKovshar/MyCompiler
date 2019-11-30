@@ -208,11 +208,10 @@ public class RecursiveDescentParser implements Parser {
 
     /**
      * rel_expression = expression, {comp, expression};
-     * condFactor = ("not") {condFactor | constant | '(' ')'}
-     * expression = term, { ("+"|"-"|"or"), term, };
-     * term = factor, { ("*" | "/" | "and"), factor };
-     * base = ("+" | "-" | "not"), (base | constant | ("(" expression ")") | identifier)
+     * expression = term, { ("+"|"-"), term, };
+     * term = factor, { ("*" | "/"), factor };
      * factor = base { ("**") base};
+     * base = ["+" | "-"], (base | constant | ("(" expression ")") | identifier)
      */
     private void parseRelExpression() throws WrongSyntaxException {
         parseExpression();
