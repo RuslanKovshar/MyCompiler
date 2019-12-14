@@ -6,7 +6,7 @@ import ruslan.token.TokenTypes;
 
 import java.util.*;
 
-public class LexicalAnalyzer {
+public class LexicalAnalyzer  {
 
     private final int INITIAL_STATE = 0;
     private int state = INITIAL_STATE;

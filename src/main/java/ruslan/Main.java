@@ -3,6 +3,7 @@ package ruslan;
 import ruslan.lexical.LexicalAnalyzer;
 import ruslan.syntactical.FiniteStateMachineParser;
 import ruslan.syntactical.Parser;
+import ruslan.syntactical.RecursiveDescentParser;
 import ruslan.token.Token;
 import ruslan.utils.ProgramReader;
 

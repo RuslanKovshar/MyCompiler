@@ -58,6 +58,7 @@ class SyntacticalStateHolder {
 
         /*main block*/
         states.put(new State(11, Keywords.BEGIN.toString()), 12);
+        states.put(new State(11, TokenTypes.OTHER.toString()), 114);
         states.put(new State(12, TokenTypes.NEW_LINE.toString()), 13);
         states.put(new State(13, TokenTypes.NEW_LINE.toString()), 13);
 
@@ -71,6 +72,7 @@ class SyntacticalStateHolder {
         states.put(new State(16, TokenTypes.R_PARENTHESIS_OPERATION.toString()), 17);
         states.put(new State(16, TokenTypes.OTHER.toString()), 108);
         states.put(new State(17, TokenTypes.NEW_LINE.toString()), 13);
+        states.put(new State(17, TokenTypes.OTHER.toString()), 505);
         states.put(new State(13, TokenTypes.NEW_LINE.toString()), 13);
 
         /*assign*/
@@ -79,7 +81,7 @@ class SyntacticalStateHolder {
         states.put(new State(20, TokenTypes.OTHER.toString()), 109);
         states.put(new State(21, TokenTypes.OTHER.toString()), 111);
 
-        /*statement*/
+        /*expression*/
         states.put(new State(21, TokenTypes.ADDITION_OPERATION.toString()), 22);
         states.put(new State(22, TokenTypes.INT.toString()), 23);
         states.put(new State(22, TokenTypes.DOUBLE.toString()), 23);
@@ -87,14 +89,77 @@ class SyntacticalStateHolder {
         states.put(new State(22, TokenTypes.OTHER.toString()), 110);
         states.put(new State(21, TokenTypes.INT.toString()), 23);
         states.put(new State(21, TokenTypes.DOUBLE.toString()), 23);
-        states.put(new State(21, TokenTypes.BOOLEAN.toString()), 23);
+        states.put(new State(21, TokenTypes.BOOLEAN.toString()),23);
         states.put(new State(21, TokenTypes.IDENTIFIER.toString()), 23);
         states.put(new State(21, TokenTypes.L_PARENTHESIS_OPERATION.toString()), 21);
+        states.put(new State(22, TokenTypes.L_PARENTHESIS_OPERATION.toString()), 22);
 
-        states.put(new State(70, TokenTypes.R_PARENTHESIS_OPERATION.toString()), 23);
-        states.put(new State(70, TokenTypes.OTHER.toString()), 108);
+        states.put(new State(23, TokenTypes.POW_OPERATION.toString()), 21);
+        states.put(new State(23, TokenTypes.MULTIPLICATION_OPERATION.toString()), 21);
+        states.put(new State(23, TokenTypes.ADDITION_OPERATION.toString()), 21);
 
+        states.put(new State(23, TokenTypes.RELATIVE_OPERATION.toString()), 21);
+
+        states.put(new State(25, TokenTypes.R_PARENTHESIS_OPERATION.toString()), 23);
+        states.put(new State(25, TokenTypes.OTHER.toString()), 108);
+
+        states.put(new State(23, TokenTypes.OTHER.toString()), 112);
         states.put(new State(23, TokenTypes.NEW_LINE.toString()), 13);
         states.put(new State(13, TokenTypes.NEW_LINE.toString()), 13);
+
+        /*write*/
+        states.put(new State(13, Keywords.WRITE.toString()), 30);
+        states.put(new State(30, TokenTypes.L_PARENTHESIS_OPERATION.toString()), 31);
+        states.put(new State(30, TokenTypes.OTHER.toString()), 107);
+        states.put(new State(31, TokenTypes.IDENTIFIER.toString()), 32);
+        states.put(new State(31, TokenTypes.OTHER.toString()), 105);
+        states.put(new State(32, TokenTypes.PUNCTUATION.toString()), 31);
+
+        states.put(new State(31, TokenTypes.DOUBLE.toString()), 23);
+        states.put(new State(31, TokenTypes.INT.toString()), 23);
+        states.put(new State(31, TokenTypes.ADDITION_OPERATION.toString()), 22);
+        states.put(new State(31, TokenTypes.L_PARENTHESIS_OPERATION.toString()), 21);
+
+        states.put(new State(32, TokenTypes.POW_OPERATION.toString()), 21);
+        states.put(new State(32, TokenTypes.MULTIPLICATION_OPERATION.toString()), 21);
+        states.put(new State(32, TokenTypes.ADDITION_OPERATION.toString()), 21);
+        states.put(new State(32, TokenTypes.RELATIVE_OPERATION.toString()), 21);
+
+        states.put(new State(32, TokenTypes.R_PARENTHESIS_OPERATION.toString()), 33);
+        states.put(new State(32, TokenTypes.OTHER.toString()), 108);
+        states.put(new State(33, TokenTypes.NEW_LINE.toString()), 13);
+        states.put(new State(13, TokenTypes.NEW_LINE.toString()), 13);
+
+        /*cycle*/
+        states.put(new State(13, Keywords.DO.toString()), 40);
+        states.put(new State(40, TokenTypes.OTHER.toString()), 113);
+        states.put(new State(40, Keywords.WHILE.toString()), 41);
+        states.put(new State(41, TokenTypes.L_PARENTHESIS_OPERATION.toString()), 42);
+        states.put(new State(41, TokenTypes.OTHER.toString()), 107);
+
+        states.put(new State(42, TokenTypes.DOUBLE.toString()), 46);
+        states.put(new State(42, TokenTypes.INT.toString()), 46);
+        states.put(new State(42, TokenTypes.IDENTIFIER.toString()), 46);
+
+        states.put(new State(46, TokenTypes.RELATIVE_OPERATION.toString()), 21);
+
+        states.put(new State(42, TokenTypes.BOOLEAN.toString()), 32);
+
+        states.put(new State(42, TokenTypes.ADDITION_OPERATION.toString()), 22);
+        states.put(new State(42, TokenTypes.L_PARENTHESIS_OPERATION.toString()), 21);
+
+        states.put(new State(13, Keywords.ENDDO.toString()), 49);
+
+        /*if*/
+        states.put(new State(13, Keywords.IF.toString()), 50);
+
+        states.put(new State(13, Keywords.ELSE.toString()), 55);
+        states.put(new State(50, TokenTypes.OTHER.toString()), 42);
+        states.put(new State(13, Keywords.ENDIF.toString()), 59);
+
+
+        states.put(new State(13, TokenTypes.OTHER.toString()), 112);
+
+        states.put(new State(13, Keywords.ENDBEGIN.toString()), 70);
     }
 }

@@ -1,6 +1,7 @@
 program HelloThere
 var
     int N,m
+    int n
     double k,l
     boolean m
     int k,l
@@ -8,6 +9,60 @@ var
 endvar
 begin
     read(m,k,l)
-    read(m)
+    read(l)
+    a = (5/((a + -(5/-5)) * 8) + 5)
+    n = -m / 5 + 9..5
+    b = -(a + b)
+    isBad = (a + b) < 6
+    isGood = a < 6
+    write(j)
+    write(j,a)
+    p = (5 + 5 - 9 / 7.5 - (6) ** 2 - 0)
 
-    a = (7)
+    write((a + b) < 6)
+    do while (a == (b - a * (m/90)))
+        read(a)
+        write(a)
+        do while (a < m)
+            write(m)
+            do while (a == (b - a * (m/90)))
+                    read(a)
+                    write(a)
+                    do while (a < m)
+                        write(m)
+                    enddo
+                enddo
+        enddo
+    enddo
+
+    if (a+m)/100 < b
+        write(a)
+        if a == b
+            write((a + b) + (m*l))
+        else
+            b = 90
+        endif
+    else
+    if (a+m)/100 < b
+            write(a)
+            if a == b
+                write((a + b) + (m*l))
+            else
+                b = 90
+            endif
+        else
+            write(b)
+        endif
+        do while (a == (b - a * (m/90)))
+                read(a)
+                write(a)
+                do while (a < m)
+                    write(m)
+                enddo
+            enddo
+        write(b)
+    endif
+
+endbegin
+
+

@@ -28,5 +28,8 @@ class ErrorHolder {
         errors.put(109, "Not a statement");
         errors.put(110, "Variable expected");
         errors.put(111, "Expression expected");
+        errors.put(112, "Unexpected token");
+        errors.put(113,"'while' expected");
+        errors.put(114,"'begin' expected");
     }
 }
