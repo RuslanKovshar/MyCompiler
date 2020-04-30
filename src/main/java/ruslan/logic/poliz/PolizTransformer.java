@@ -7,8 +7,8 @@ import java.util.*;
 
 public class PolizTransformer {
 
-    private Map<TokenTypes, Integer> priorityTable = new HashMap<>();
-    private Stack<Token> stack = new Stack<>();
+    private final Map<TokenTypes, Integer> priorityTable = new HashMap<>();
+    private final Stack<Token> stack = new Stack<>();
 
     {
         priorityTable.put(TokenTypes.POW_OPERATION, 4);
@@ -52,7 +52,7 @@ public class PolizTransformer {
 
         for (Token token : tokens) {
             TokenTypes type = token.getType();
-            if (type == TokenTypes.INT || type == TokenTypes.DOUBLE) {
+            if (type == TokenTypes.INT || type == TokenTypes.DOUBLE || type == TokenTypes.IDENTIFIER) {
                 result.add(token);
             } else {
                 if (stack.isEmpty()) {

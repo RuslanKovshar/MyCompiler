@@ -3,5 +3,13 @@ var
     int a,n,b,p,k
 endvar
 begin
-    a = 5 + 10
+    read(a,b,c)
+
+
+    a = b - 80
+
+    read(m)
+
+    write(100)
+    write(5 + 8)
 endbegin
