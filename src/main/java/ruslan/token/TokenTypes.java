@@ -17,5 +17,7 @@ public enum TokenTypes {
     INT,
     BOOLEAN,
     PUNCTUATION,
-    OTHER
+    OTHER,
+
+    U_MINUS
 }

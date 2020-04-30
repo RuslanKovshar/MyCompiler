@@ -1,6 +1,9 @@
 package ruslan;
 
+import ruslan.exceptions.WrongSyntaxException;
 import ruslan.lexical.LexicalAnalyzer;
+import ruslan.logic.LogicAnalyzer;
+import ruslan.postfix.PostfixTranslator;
 import ruslan.syntactical.FiniteStateMachineParser;
 import ruslan.syntactical.Parser;
 import ruslan.syntactical.RecursiveDescentParser;
@@ -17,6 +20,14 @@ public class Main {
         LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(program);
         List<Token> tokens = lexicalAnalyzer.analyze();
         Parser parser = new FiniteStateMachineParser(tokens);
-        parser.parse();
+        try {
+            parser.parse();
+            PostfixTranslator translator = new PostfixTranslator();
+            translator.translateToPostfix(tokens);
+            //LogicAnalyzer logicAnalyzer = new LogicAnalyzer();
+            //logicAnalyzer.perform(tokens);
+        } catch (WrongSyntaxException e) {
+            e.printStackTrace();
+        }
     }
 }

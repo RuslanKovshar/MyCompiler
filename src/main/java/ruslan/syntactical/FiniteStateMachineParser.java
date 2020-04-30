@@ -25,7 +25,8 @@ public class FiniteStateMachineParser implements Parser {
         this.tokens = tokens;
     }
 
-    private void analyze() throws WrongSyntaxException {
+    @Override
+    public void parse() throws WrongSyntaxException {
         int i;
         for (i = 0; i < tokens.size(); i++) {
             state = getNextState(state, tokens.get(i));
@@ -112,15 +113,6 @@ public class FiniteStateMachineParser implements Parser {
         }
         if (!beginStack.empty()) {
             throw new WrongSyntaxException("Non closed program", tokens.get(tokens.size() - 1).getLineNumber());
-        }
-    }
-
-    @Override
-    public void parse() {
-        try {
-            analyze();
-        } catch (WrongSyntaxException e) {
-            log.error(e.getErrorMessage());
         }
     }
 
