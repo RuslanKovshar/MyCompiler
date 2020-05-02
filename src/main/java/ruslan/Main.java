@@ -22,10 +22,8 @@ public class Main {
         Parser parser = new FiniteStateMachineParser(tokens);
         try {
             parser.parse();
-            PostfixTranslator translator = new PostfixTranslator();
-            translator.translateToPostfix(tokens);
-            //LogicAnalyzer logicAnalyzer = new LogicAnalyzer();
-            //logicAnalyzer.perform(tokens);
+            PostfixTranslator translator = new PostfixTranslator(tokens);
+            translator.translateToPostfix();
         } catch (WrongSyntaxException e) {
             e.printStackTrace();
         }
