@@ -15,6 +15,7 @@ public class PostfixTranslator {
     private final Token outToken = new Token(-1, "OUT", -1);
     private final Token inputToken = new Token(-2, "INPUT", -2);
     private final List<Token> result = new ArrayList<>();
+    private final List<Token> labels = new ArrayList<>();
     private final List<Token> statementsTokens;
     private int index;
 
@@ -71,6 +72,41 @@ public class PostfixTranslator {
             }
 
         }
+
+        /*If statement translation*/
+        if (token.getLexeme().equals(Keywords.IF.toString())) {
+            index++;
+
+            List<Token> performTokens = new ArrayList<>();
+            index = getPerformTokens(statementsTokens, index, performTokens, TokenTypes.NEW_LINE);
+            result.addAll(polizTransformer.transform(performTokens));
+
+            /* label creation */
+            Token openLabel = new Token(-7, "m" + (labels.size() + 1), -7);
+            labels.add(openLabel);
+
+            result.add(openLabel);
+            result.add(new Token(-8, "JF", -8));
+
+            Token closeLabel = new Token(-7, "m" + (labels.size() + 1), -7);
+
+            while (!statementsTokens.get(index).getLexeme().equals(Keywords.ENDIF.toString())) {
+                Token currentToken = statementsTokens.get(index);
+                if (currentToken.getLexeme().equals(Keywords.ELSE.toString())) {
+                    labels.add(closeLabel);
+
+                    result.add(closeLabel);
+                    result.add(new Token(-8, "JMP", -8));
+                    result.add(openLabel);
+                } else {
+                    translateToken(currentToken);
+                }
+                index++;
+            }
+
+            labels.add(closeLabel);
+            result.add(closeLabel);
+        }
     }
 
     private int getPerformTokens(List<Token> statementsTokens, int i, List<Token> performTokens, TokenTypes type) {
@@ -83,15 +119,14 @@ public class PostfixTranslator {
 
     private List<Token> getStatementsTokens(List<Token> tokens) {
         Iterator<Token> iterator = tokens.iterator();
-        while (true) {
-            if (iterator.next().getLexeme().equals("begin")) break;
+        while (iterator.hasNext()) {
+            if (iterator.next().getLexeme().equals(Keywords.BEGIN.toString())) break;
         }
 
-
         List<Token> result = new ArrayList<>();
-        while (true) {
+        while (iterator.hasNext()) {
             Token next = iterator.next();
-            if (next.getLexeme().equals("endbegin")) break;
+            if (next.getLexeme().equals(Keywords.ENDBEGIN.toString())) break;
             result.add(next);
         }
 

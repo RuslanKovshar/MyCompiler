@@ -3,13 +3,13 @@ var
     int a,n,b,p,k
 endvar
 begin
-    read(a,b,c)
-
-
-    a = b - 80
-
-    read(m)
-
-    write(100)
-    write(5 + 8)
+    if (8 + 5) ** 2 + 5 > 8 * 2
+        if a == b
+            write(a)
+        else
+            write(b)
+        endif
+    else
+        read(a,b)
+    endif
 endbegin

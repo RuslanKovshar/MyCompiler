@@ -11,6 +11,7 @@ public class PolizTransformer {
     private final Stack<Token> stack = new Stack<>();
 
     {
+        priorityTable.put(TokenTypes.RELATIVE_OPERATION, 0);
         priorityTable.put(TokenTypes.POW_OPERATION, 4);
 
         priorityTable.put(TokenTypes.MULTIPLICATION_OPERATION, 2);
@@ -26,7 +27,6 @@ public class PolizTransformer {
     }
 
     public List<Token> transform(List<Token> tokens) {
-        // StringBuilder output = new StringBuilder();
         for (int i = 0; i < tokens.size(); i++) {
             Token token = tokens.get(i);
             if (token.getType() == TokenTypes.ADDITION_OPERATION
