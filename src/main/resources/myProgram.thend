@@ -3,13 +3,10 @@ var
     int a,n,b,p,k
 endvar
 begin
-    if (8 + 5) ** 2 + 5 > 8 * 2
-        if a == b
+    do while (a < b)
+        read(a)
+        do while (a == 2)
             write(a)
-        else
-            write(b)
-        endif
-    else
-        read(a,b)
-    endif
+        enddo
+    enddo
 endbegin

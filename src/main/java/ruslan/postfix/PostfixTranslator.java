@@ -14,6 +14,8 @@ public class PostfixTranslator {
     private final PolizTransformer polizTransformer = new PolizTransformer();
     private final Token outToken = new Token(-1, "OUT", -1);
     private final Token inputToken = new Token(-2, "INPUT", -2);
+    private final Token jfToken = new Token(-8, "JF", -8);
+    private final Token jmpToken = new Token(-8, "JMP", -8);
     private final List<Token> result = new ArrayList<>();
     private final List<Token> labels = new ArrayList<>();
     private final List<Token> statementsTokens;
@@ -86,7 +88,7 @@ public class PostfixTranslator {
             labels.add(openLabel);
 
             result.add(openLabel);
-            result.add(new Token(-8, "JF", -8));
+            result.add(jfToken);
 
             Token closeLabel = new Token(-7, "m" + (labels.size() + 1), -7);
 
@@ -96,7 +98,7 @@ public class PostfixTranslator {
                     labels.add(closeLabel);
 
                     result.add(closeLabel);
-                    result.add(new Token(-8, "JMP", -8));
+                    result.add(jmpToken);
                     result.add(openLabel);
                 } else {
                     translateToken(currentToken);
@@ -105,6 +107,38 @@ public class PostfixTranslator {
             }
 
             labels.add(closeLabel);
+            result.add(closeLabel);
+        }
+
+        /*do while translation*/
+        if (token.getLexeme().equals(Keywords.DO.toString())) {
+            index += 3;
+
+            /* label creation */
+            Token openLabel = new Token(-7, "m" + (labels.size() + 1), -7);
+            labels.add(openLabel);
+
+            result.add(openLabel);
+
+            Token closeLabel = new Token(-7, "m" + (labels.size() + 1), -7);
+
+            /* condition parsing */
+            List<Token> performTokens = new ArrayList<>();
+            index = getPerformTokens(statementsTokens, index, performTokens, TokenTypes.R_PARENTHESIS_OPERATION);
+            result.addAll(polizTransformer.transform(performTokens));
+
+            labels.add(closeLabel);
+            result.add(closeLabel);
+            result.add(jfToken);
+
+            while (!statementsTokens.get(index).getLexeme().equals(Keywords.ENDDO.toString())) {
+                Token currentToken = statementsTokens.get(index);
+                translateToken(currentToken);
+                index++;
+            }
+
+            result.add(openLabel);
+            result.add(jmpToken);
             result.add(closeLabel);
         }
     }
