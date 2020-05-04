@@ -40,7 +40,8 @@ public class PolizTransformer {
                     if (prevTokenType == TokenTypes.ADDITION_OPERATION
                             || prevTokenType == TokenTypes.MULTIPLICATION_OPERATION
                             || prevTokenType == TokenTypes.POW_OPERATION
-                            || prevTokenType == TokenTypes.L_PARENTHESIS_OPERATION) {
+                            || prevTokenType == TokenTypes.L_PARENTHESIS_OPERATION
+                            || prevTokenType == TokenTypes.RELATIVE_OPERATION) {
                         token.setType(TokenTypes.U_MINUS);
                         token.setLexeme("UM");
                     }

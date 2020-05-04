@@ -35,6 +35,9 @@ public class PostfixInterpreter {
             if (token.getLexeme().equals("INPUT")) {
                 read();
             }
+            if (token.getLexeme().equals("JF")) {
+                doJumpFalse();
+            }
             if (isNumeric(type)) {
                 doNumeric(token.getLexeme());
             }
@@ -42,6 +45,10 @@ public class PostfixInterpreter {
                 doRelative(token.getLexeme());
             }
         }
+    }
+
+    private void doJumpFalse() {
+        System.err.println(resultStack.pop());
     }
 
     private void doRelative(String operation) {
@@ -154,7 +161,6 @@ public class PostfixInterpreter {
         }
     }
 
-    //TODO: make negative
     private void negative() {
         InterpretationData data = resultStack.pop();
 

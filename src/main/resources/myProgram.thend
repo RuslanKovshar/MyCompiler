@@ -5,14 +5,10 @@ var
     double d
 endvar
 begin
-    a = -3
-    c = a < 3
-    w = c != true
-    b = -a - -a
-    write(a)
-    write(b)
-    write(c)
-    write(w)
-    read(n)
-    write(n)
+    a = 3
+    if a == 3
+        write(1335)
+    else
+        write(404)
+    endif
 endbegin
