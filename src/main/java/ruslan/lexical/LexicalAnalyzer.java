@@ -11,16 +11,16 @@ public class LexicalAnalyzer  {
     private final int INITIAL_STATE = 0;
     private int state = INITIAL_STATE;
     private int lineNumber = 1;
-    private String program;
-    private List<Integer> finalStates = new ArrayList<>(Arrays.asList(2, 6, 9, 12, 13, 14, 15, 101, 102, 55, 103, 90, 83, 56, 45));
-    private List<Integer> mainStates = new ArrayList<>(Arrays.asList(2, 6, 9)); //states for int double ind
-    private List<Integer> errorStates = new ArrayList<>(Arrays.asList(102, 103));
+    private final String program;
+    private final List<Integer> finalStates = new ArrayList<>(Arrays.asList(2, 6, 9, 12, 13, 14, 15, 101, 102, 55, 103, 90, 83, 56, 45));
+    private final List<Integer> mainStates = new ArrayList<>(Arrays.asList(2, 6, 9)); //states for int double ind
+    private final List<Integer> errorStates = new ArrayList<>(Arrays.asList(102, 103));
     private String lexeme = "";
     private int index = -1;
 
-    private List<Token> tokens = new ArrayList<>();
-    private List<Token> constants = new ArrayList<>();
-    private List<Token> variables = new ArrayList<>();
+    private final List<Token> tokens = new ArrayList<>();
+    private final List<Token> constants = new ArrayList<>();
+    private final List<Token> variables = new ArrayList<>();
 
     public LexicalAnalyzer(String program) {
         this.program = program;

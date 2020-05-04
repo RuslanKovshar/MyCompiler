@@ -52,7 +52,7 @@ public class PolizTransformer {
 
         for (Token token : tokens) {
             TokenTypes type = token.getType();
-            if (type == TokenTypes.INT || type == TokenTypes.DOUBLE || type == TokenTypes.IDENTIFIER) {
+            if (type == TokenTypes.INT || type == TokenTypes.DOUBLE || type == TokenTypes.IDENTIFIER || type == TokenTypes.BOOLEAN) {
                 result.add(token);
             } else {
                 if (stack.isEmpty()) {

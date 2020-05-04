@@ -1,12 +1,18 @@
 program HelloThere
 var
-    int a,n,b,p,k
+    int a,n,b
+    boolean c,w
+    double d
 endvar
 begin
-    do while (a < b)
-        read(a)
-        do while (a == 2)
-            write(a)
-        enddo
-    enddo
+    a = -3
+    c = a < 3
+    w = c != true
+    b = -a - -a
+    write(a)
+    write(b)
+    write(c)
+    write(w)
+    read(n)
+    write(n)
 endbegin

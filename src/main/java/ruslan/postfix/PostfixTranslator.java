@@ -5,13 +5,12 @@ import ruslan.logic.poliz.PolizTransformer;
 import ruslan.token.Token;
 import ruslan.token.TokenTypes;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class PostfixTranslator {
 
     private final PolizTransformer polizTransformer = new PolizTransformer();
+    private final Map<String, Variable> variableMap = new HashMap<>();
     private final Token outToken = new Token(-1, "OUT", -1);
     private final Token inputToken = new Token(-2, "INPUT", -2);
     private final Token jfToken = new Token(-8, "JF", -8);
@@ -153,8 +152,20 @@ public class PostfixTranslator {
 
     private List<Token> getStatementsTokens(List<Token> tokens) {
         Iterator<Token> iterator = tokens.iterator();
+
+        String type = null;
         while (iterator.hasNext()) {
-            if (iterator.next().getLexeme().equals(Keywords.BEGIN.toString())) break;
+            Token next = iterator.next();
+            String lexeme = next.getLexeme();
+            if (lexeme.equals(Keywords.BEGIN.toString())) break;
+            if (lexeme.equals(Keywords.INT.toString())
+                    || lexeme.equals(Keywords.DOUBLE.toString())
+                    || lexeme.equals(Keywords.BOOLEAN.toString())) {
+                type = lexeme;
+            }
+            if (next.getType() == TokenTypes.IDENTIFIER && type != null) {
+                variableMap.put(lexeme, new Variable(null, type));
+            }
         }
 
         List<Token> result = new ArrayList<>();
@@ -165,5 +176,9 @@ public class PostfixTranslator {
         }
 
         return result;
+    }
+
+    public Map<String, Variable> getVariableMap() {
+        return variableMap;
     }
 }
