@@ -14,12 +14,10 @@ import static ruslan.token.TokenTypes.*;
 
 public class RecursiveDescentParser implements Parser {
     private static final Logger log = Logger.getLogger(RecursiveDescentParser.class);
-    private List<Token> tokens;
-    private Set<Token> identifierList = new HashSet<>();
+    private final List<Token> tokens;
     private int index = 0;
 
     public RecursiveDescentParser(List<Token> tokens) {
-        //tokens.add(new Token(0, "", 1));
         this.tokens = tokens;
     }
 
@@ -31,7 +29,6 @@ public class RecursiveDescentParser implements Parser {
             parseDeclarationBlock();
             parseMainBlock();
         } catch (WrongSyntaxException e) {
-            //e.printStackTrace();
             log.error(e.getErrorMessage());
         } catch (Exception e) {
             log.error(e);
@@ -120,13 +117,12 @@ public class RecursiveDescentParser implements Parser {
                 .map(Token::getLexeme)
                 .filter(token -> token.equals(ELSE.toString()))
                 .findAny();
+
         if (any.isPresent()) {
             parseStatementList(ELSE);
             Token elseToken = tokens.get(index++);
-            parseStatementList(ENDIF);
-        } else {
-            parseStatementList(ENDIF);
         }
+        parseStatementList(ENDIF);
         index++;
     }
 
@@ -334,11 +330,6 @@ public class RecursiveDescentParser implements Parser {
         if (token.getType() != TokenTypes.IDENTIFIER) {
             throw new WrongSyntaxException("Identifier expected", token.getLineNumber());
         }
-
-        /*if (!identifierList.add(token)) {
-            throw new WrongSyntaxException("Variable '" + token.getLexeme() + "' already defined in the scope",
-                    token.getLineNumber());
-        }*/
 
         if (tokens.get(this.index).getType() == TokenTypes.PUNCTUATION) {
             this.index++;

@@ -1,25 +1,23 @@
 package ruslan.syntactical;
 
-import org.apache.log4j.Logger;
 import ruslan.exceptions.WrongSyntaxException;
 import ruslan.lexical.State;
 import ruslan.token.Token;
 import ruslan.token.TokenTypes;
 
-import java.util.*;
+import java.util.List;
+import java.util.Set;
+import java.util.Stack;
 
 public class FiniteStateMachineParser implements Parser {
-    private static final Logger log = Logger.getLogger(FiniteStateMachineParser.class);
     private final int INITIAL_STATE = 1;
-    private final int EXPRESSION_START_STATE = 21;
-    private final int EXPRESSION_END_STATE = 23;
     private int state = INITIAL_STATE;
-    private List<Token> tokens;
-    private Set<Integer> errorStates = ErrorHolder.getErrors().keySet();
-    private Stack<Token> parenthesis = new Stack<>();
-    private Stack<Token> cycleStack = new Stack<>();
-    private Stack<Token> ifStack = new Stack<>();
-    private Stack<Token> beginStack = new Stack<>();
+    private final List<Token> tokens;
+    private final Set<Integer> errorStates = ErrorHolder.getErrors().keySet();
+    private final Stack<Token> parenthesis = new Stack<>();
+    private final Stack<Token> cycleStack = new Stack<>();
+    private final Stack<Token> ifStack = new Stack<>();
+    private final Stack<Token> beginStack = new Stack<>();
 
     public FiniteStateMachineParser(List<Token> tokens) {
         this.tokens = tokens;
@@ -30,6 +28,7 @@ public class FiniteStateMachineParser implements Parser {
         int i;
         for (i = 0; i < tokens.size(); i++) {
             state = getNextState(state, tokens.get(i));
+            int EXPRESSION_START_STATE = 21;
             if (state == EXPRESSION_START_STATE || state == 22 || state == 31 || state == 42) {
                 if (tokens.get(i).getType() == TokenTypes.L_PARENTHESIS_OPERATION) {
                     parenthesis.push(tokens.get(i));
@@ -72,6 +71,7 @@ public class FiniteStateMachineParser implements Parser {
                     throw new WrongSyntaxException("If expected", tokens.get(i).getLineNumber());
                 }
             }
+            int EXPRESSION_END_STATE = 23;
             if (state == EXPRESSION_END_STATE) {
                 if (!parenthesis.empty()) {
                     TokenTypes type = tokens.get(i + 1).getType();

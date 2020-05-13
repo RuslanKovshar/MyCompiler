@@ -3,8 +3,8 @@ package ruslan.lexical;
 import java.util.Objects;
 
 public class State {
-    private int number;
-    private String type;
+    private final int number;
+    private final String type;
 
     public State(int number, String type) {
         this.number = number;

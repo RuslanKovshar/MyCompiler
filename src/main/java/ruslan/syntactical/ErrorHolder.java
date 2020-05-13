@@ -1,7 +1,5 @@
 package ruslan.syntactical;
 
-import ruslan.token.TokenTypes;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +7,7 @@ import static ruslan.Keywords.*;
 
 class ErrorHolder {
 
-    static private Map<Integer, String> errors = new HashMap<>();
+    static private final Map<Integer, String> errors = new HashMap<>();
 
     static Map<Integer, String> getErrors() {
         return errors;
