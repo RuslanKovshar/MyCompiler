@@ -31,16 +31,16 @@ public class PostfixInterpreter {
             if (type == TokenTypes.U_MINUS) {
                 negative();
             }
-            if (token.getLexeme().equals("OUT")) {
+            if (token.getLexeme().equals(Commands.OUT.name())) {
                 write();
             }
-            if (token.getLexeme().equals("INPUT")) {
+            if (token.getLexeme().equals(Commands.INPUT.name())) {
                 read();
             }
-            if (token.getLexeme().equals("JMP")){
+            if (token.getLexeme().equals(Commands.JMP.name())){
                 doJumpToLabel();
             }
-            if (token.getLexeme().equals("JF")) {
+            if (token.getLexeme().equals(Commands.JF.name())) {
                 doJumpFalse();
             }
             if (isNumeric(type)) {

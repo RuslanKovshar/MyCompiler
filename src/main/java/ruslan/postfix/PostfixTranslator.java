@@ -10,10 +10,10 @@ public class PostfixTranslator {
 
     private final PRNTransformer PRNTransformer = new PRNTransformer();
     private final Map<String, Variable> variableMap = new HashMap<>();
-    private final Token outToken = new Token(-1, "OUT", -1);
-    private final Token inputToken = new Token(-2, "INPUT", -2);
-    private final Token jfToken = new Token(-8, "JF", -8);
-    private final Token jmpToken = new Token(-8, "JMP", -8);
+    private final Token outToken = new Token(-1, Commands.OUT.name(), -1);
+    private final Token inputToken = new Token(-2, Commands.INPUT.name(), -2);
+    private final Token jfToken = new Token(-8, Commands.JF.name(), -8);
+    private final Token jmpToken = new Token(-8, Commands.JMP.name(), -8);
     private final List<Token> result = new ArrayList<>();
     private final List<Token> labels = new ArrayList<>();
     private final List<Token> statementsTokens;
