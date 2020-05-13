@@ -1,7 +1,6 @@
 package ruslan.postfix;
 
 import ruslan.Keywords;
-import ruslan.logic.poliz.PolizTransformer;
 import ruslan.token.Token;
 import ruslan.token.TokenTypes;
 
@@ -9,7 +8,7 @@ import java.util.*;
 
 public class PostfixTranslator {
 
-    private final PolizTransformer polizTransformer = new PolizTransformer();
+    private final PRNTransformer PRNTransformer = new PRNTransformer();
     private final Map<String, Variable> variableMap = new HashMap<>();
     private final Token outToken = new Token(-1, "OUT", -1);
     private final Token inputToken = new Token(-2, "INPUT", -2);
@@ -44,7 +43,7 @@ public class PostfixTranslator {
             List<Token> performTokens = new ArrayList<>();
             index = getPerformTokens(statementsTokens, index, performTokens, TokenTypes.NEW_LINE);
 
-            result.addAll(polizTransformer.transform(performTokens));
+            result.addAll(PRNTransformer.transform(performTokens));
             result.add(assignToken);
         }
 
@@ -55,7 +54,7 @@ public class PostfixTranslator {
             List<Token> performTokens = new ArrayList<>();
             index = getPerformTokens(statementsTokens, index, performTokens, TokenTypes.R_PARENTHESIS_OPERATION);
 
-            result.addAll(polizTransformer.transform(performTokens));
+            result.addAll(PRNTransformer.transform(performTokens));
             result.add(outToken);
         }
 
@@ -75,22 +74,26 @@ public class PostfixTranslator {
         }
 
         /*If statement translation*/
+        int labelIndex;
         if (token.getLexeme().equals(Keywords.IF.toString())) {
             index++;
 
             List<Token> performTokens = new ArrayList<>();
             index = getPerformTokens(statementsTokens, index, performTokens, TokenTypes.NEW_LINE);
-            result.addAll(polizTransformer.transform(performTokens));
+            result.addAll(PRNTransformer.transform(performTokens));
 
             /* label creation */
-            Token openLabel = new Token(-7, "m" + (labels.size() + 1), -7);
+            labelIndex = labels.size() + 1;
+            Token openLabel = new Token(token.getLineNumber(), "m" + labelIndex, labelIndex);
             labels.add(openLabel);
 
             result.add(openLabel);
             result.add(jfToken);
 
-            Token closeLabel = new Token(-7, "m" + (labels.size() + 1), -7);
+            labelIndex = labels.size() + 1;
+            Token closeLabel = new Token(token.getLineNumber(), "m" + labelIndex, labelIndex);
 
+            boolean isElsePresent = false;
             while (!statementsTokens.get(index).getLexeme().equals(Keywords.ENDIF.toString())) {
                 Token currentToken = statementsTokens.get(index);
                 if (currentToken.getLexeme().equals(Keywords.ELSE.toString())) {
@@ -99,6 +102,8 @@ public class PostfixTranslator {
                     result.add(closeLabel);
                     result.add(jmpToken);
                     result.add(openLabel);
+
+                    isElsePresent = true;
                 } else {
                     translateToken(currentToken);
                 }
@@ -106,7 +111,12 @@ public class PostfixTranslator {
             }
 
             labels.add(closeLabel);
-            result.add(closeLabel);
+
+            if (isElsePresent) {
+                result.add(closeLabel);
+            } else {
+                result.add(openLabel);
+            }
         }
 
         /*do while translation*/
@@ -114,17 +124,19 @@ public class PostfixTranslator {
             index += 3;
 
             /* label creation */
-            Token openLabel = new Token(-7, "m" + (labels.size() + 1), -7);
+            labelIndex = labels.size() + 1;
+            Token openLabel = new Token(token.getLineNumber(), "m" + labelIndex, labelIndex);
             labels.add(openLabel);
 
             result.add(openLabel);
 
-            Token closeLabel = new Token(-7, "m" + (labels.size() + 1), -7);
+            labelIndex = labels.size() + 1;
+            Token closeLabel = new Token(token.getLineNumber(), "m" + labelIndex, labelIndex);
 
             /* condition parsing */
             List<Token> performTokens = new ArrayList<>();
             index = getPerformTokens(statementsTokens, index, performTokens, TokenTypes.R_PARENTHESIS_OPERATION);
-            result.addAll(polizTransformer.transform(performTokens));
+            result.addAll(PRNTransformer.transform(performTokens));
 
             labels.add(closeLabel);
             result.add(closeLabel);

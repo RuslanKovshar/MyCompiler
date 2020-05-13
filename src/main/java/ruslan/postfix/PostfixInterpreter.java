@@ -11,6 +11,7 @@ public class PostfixInterpreter {
     private final Scanner scanner = new Scanner(System.in);
     private final Map<String, Variable> variableMap;
     private final List<Token> prn;
+    private int index;
 
     public PostfixInterpreter(List<Token> prn, Map<String, Variable> variableMap) {
         this.prn = prn;
@@ -18,7 +19,8 @@ public class PostfixInterpreter {
     }
 
     public void doInterpretation() {
-        for (Token token : prn) {
+        for (index = 0; index < prn.size(); index++) {
+            Token token = prn.get(index);
             TokenTypes type = token.getType();
             if (isVariable(type)) {
                 pushTokenToStack(token, type);
@@ -35,6 +37,9 @@ public class PostfixInterpreter {
             if (token.getLexeme().equals("INPUT")) {
                 read();
             }
+            if (token.getLexeme().equals("JMP")){
+                doJumpToLabel();
+            }
             if (token.getLexeme().equals("JF")) {
                 doJumpFalse();
             }
@@ -47,8 +52,32 @@ public class PostfixInterpreter {
         }
     }
 
+    private void doJumpToLabel() {
+        Token jumpLabel = prn.get(index - 1);
+
+        int oldIndex = index;
+
+        for (;index < prn.size();index++){
+            if (prn.get(index).getLexeme().equals(jumpLabel.getLexeme())) {
+                return;
+            }
+        }
+
+        for (index = 0; index < oldIndex; index++){
+            if (prn.get(index).getLexeme().equals(jumpLabel.getLexeme())) {
+                return;
+            }
+        }
+    }
+
     private void doJumpFalse() {
-        System.err.println(resultStack.pop());
+        InterpretationData flag = resultStack.pop();
+        if (flag.getData().equals("false")) {
+            String lexeme = prn.get(index - 1).getLexeme();
+            while (!prn.get(index).getLexeme().equals(lexeme)){
+                index++;
+            }
+        }
     }
 
     private void doRelative(String operation) {

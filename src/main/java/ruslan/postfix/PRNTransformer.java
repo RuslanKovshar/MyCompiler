@@ -1,26 +1,25 @@
-package ruslan.logic.poliz;
+package ruslan.postfix;
 
 import ruslan.token.Token;
 import ruslan.token.TokenTypes;
 
 import java.util.*;
 
-public class PolizTransformer {
+public class PRNTransformer {
 
     private final Map<TokenTypes, Integer> priorityTable = new HashMap<>();
     private final Stack<Token> stack = new Stack<>();
 
     {
-        priorityTable.put(TokenTypes.RELATIVE_OPERATION, 0);
         priorityTable.put(TokenTypes.POW_OPERATION, 4);
 
         priorityTable.put(TokenTypes.MULTIPLICATION_OPERATION, 2);
-        //priorityTable.put('/', 2);
 
-        //priorityTable.put('+', 1);
         priorityTable.put(TokenTypes.ADDITION_OPERATION, 1);
 
         priorityTable.put(TokenTypes.U_MINUS, 1);
+
+        priorityTable.put(TokenTypes.RELATIVE_OPERATION, 0);
 
         priorityTable.put(TokenTypes.L_PARENTHESIS_OPERATION, -1);
         priorityTable.put(TokenTypes.R_PARENTHESIS_OPERATION, -1);
